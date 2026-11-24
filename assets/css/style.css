@@ -1433,7 +1433,7 @@ fieldset { margin: 0; padding: 0; border: 0; }
   font-size: .8125rem;
   font-weight: 500;
   text-align: right;
-  color: var(--muted-3);
+  color: var(--muted-2);
   line-height: 1.4;
 }
 .summary__row dd.is-filled { color: var(--ink); }
@@ -1915,7 +1915,7 @@ fieldset { margin: 0; padding: 0; border: 0; }
   line-height: 1.7;
   color: #8c959f;
 }
-.footer__tagline { margin-top: 10px; color: #727b85 !important; }
+.footer__tagline { margin-top: 10px; color: #858e98 !important; }
 .footer__emergency {
   display: inline-flex;
   align-items: center;
@@ -1994,7 +1994,7 @@ fieldset { margin: 0; padding: 0; border: 0; }
   font-size: .7188rem;
   color: #858e98;
 }
-.footer__prototype { color: #737c85; }
+.footer__prototype { color: #858e98; }
 
 /* ---------- 17. Mobilna vrstica + toast ---------- */
 .mobile-bar { display: none; }
