@@ -83,7 +83,7 @@
     });
 
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 1120 && nav.classList.contains('is-open')) closeNav();
+      if (window.innerWidth > 1200 && nav.classList.contains('is-open')) closeNav();
     });
   }
 

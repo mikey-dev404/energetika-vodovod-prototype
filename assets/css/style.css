@@ -352,12 +352,16 @@ fieldset { margin: 0; padding: 0; border: 0; }
 
 .nav {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 2px;
-  margin-inline: auto;
+  margin-left: auto;
+  margin-right: 10px;
 }
 .nav__link {
   position: relative;
+  flex: none;
+  white-space: nowrap;
   padding: 10px 13px;
   font-size: .875rem;
   font-weight: 500;
@@ -1608,7 +1612,7 @@ fieldset { margin: 0; padding: 0; border: 0; }
   .emergency-bar__meta { display: none; }
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1200px) {
   body.nav-open::before {
     content: "";
     position: fixed;
@@ -1635,10 +1639,11 @@ fieldset { margin: 0; padding: 0; border: 0; }
   .nav__link { padding: 13px 12px; font-size: .9375rem; border-bottom: 1px solid var(--line-soft); border-radius: 0; }
   .nav__link::after { display: none; }
   .nav-toggle { display: inline-flex; }
-  .site-header { position: sticky; }
   .header__inner { justify-content: space-between; }
   .header__actions { margin-left: auto; }
+}
 
+@media (max-width: 1120px) {
   .hero__inner { grid-template-columns: 1fr; gap: 44px; }
   .hero__copy { max-width: 44rem; }
   .hero__lead { max-width: 36rem; }
