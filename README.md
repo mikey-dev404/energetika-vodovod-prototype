@@ -1,19 +1,17 @@
-# Energetika Vodovod — multi-page website prototype
+# Energetika Vodovod — multi-page website
 
-A modern, responsive, multi-page prototype for **Energetika Vodovod d.o.o.** — *družba za izvajanje strokovnih nalog na področju energetike in vodovoda* — written in Slovenian.
+A modern, responsive, multi-page website for **Energetika Vodovod d.o.o.** — *družba za izvajanje strokovnih nalog na področju energetike in vodovoda* — written in Slovenian.
 
-Built as a dependency-free static site (HTML + CSS + vanilla JS), with a dedicated page for each service, clear navigation, breadcrumbs and readable long-form content. It can be previewed instantly, dropped on any static host, or used as a design reference for the existing WordPress/Divi site.
+Dependency-free static HTML, CSS and vanilla JS with dedicated service pages, clear navigation, readable long-form content and two working inquiry forms.
 
 **Live preview:** <https://mikey-dev404.github.io/energetika-vodovod-prototype/>  
 **Repository:** <https://github.com/mikey-dev404/energetika-vodovod-prototype>
 
 ![Home page](docs/preview-desktop.jpg)
 
-![Homepage guided inquiry](docs/preview-home-inquiry.jpg)
-
-| Service detail page | Contact & inquiry |
+| Homepage inquiry | References |
 | --- | --- |
-| ![Service page](docs/preview-service.jpg) | ![Contact page](docs/preview-contact.jpg) |
+| ![Homepage inquiry](docs/preview-home-inquiry.jpg) | ![References](docs/preview-references.jpg) |
 
 ---
 
@@ -33,47 +31,45 @@ Alternative servers:
 npx serve .          # or: php -S localhost:4321
 ```
 
-The services overview uses a folder URL (`/storitve/`). A local server handles this correctly; opening files directly via `file://` breaks that link, so use one of the commands above.
+The services overview uses a folder URL (`/storitve/`); a local server handles this correctly. Opening files directly with `file://` breaks that link.
 
 ---
 
 ## Pages
 
-| URL | Page | Content |
+| URL (production) | Page | Content |
 | --- | --- | --- |
-| `/` | **Domov** | Hero, six services, why us, two-step inquiry, three references, emergency band |
+| `/` | **Domov** | Hero, six services, why us, two-step inquiry, references, emergency band |
 | `/storitve/` | **Storitve** | Six services as a scannable index, process, contact note |
-| `/storitve/elektroinstalacije.html` | Elektroinštalacije | Scope, process, FAQ, related services |
-| `/storitve/vodovod.html` | Vodovod | Scope, process, FAQ, related services |
-| `/storitve/prezracevanje.html` | Prezračevanje | Scope, process, FAQ, related services |
-| `/storitve/klimatizacija.html` | Klimatizacija | Scope, process, FAQ, related services |
-| `/storitve/toplotne-crpalke.html` | Toplotne črpalke | Scope, process, FAQ, related services |
-| `/storitve/pametni-domovi.html` | Pametni domovi | Scope, process, FAQ, related services |
-| `/o-nas.html` | **O nas** | Company story, way of working, mission & vision, numbers, photo |
-| `/reference.html` | **Reference** | Six clearly marked sample projects |
-| `/dezurna-sluzba.html` | **Dežurna služba** | Emergency page, when to call, call process, safety note |
-| `/kontakt.html` | **Kontakt** | Full contact details and the guided inquiry form |
-| `/zasebnost.html` | **Varstvo podatkov** | Placeholder privacy & cookie information |
+| `/storitve/elektroinstalacije/` | Elektroinštalacije | Scope, process, FAQ, related services |
+| `/storitve/vodovod/` | Vodovod | Scope, process, FAQ, related services |
+| `/storitve/prezracevanje/` | Prezračevanje | Scope, process, FAQ, related services |
+| `/storitve/klimatizacija/` | Klimatizacija | Scope, process, FAQ, related services |
+| `/storitve/toplotne-crpalke/` | Toplotne črpalke | Scope, process, FAQ, related services |
+| `/storitve/pametni-domovi/` | Pametni domovi | Scope, process, FAQ, related services |
+| `/o-nas/` | **O nas** | Company story, way of working, mission & vision, numbers, photo |
+| `/reference/` | **Reference** | Six selected photographs from the company’s work |
+| `/dezurna-sluzba/` | **Dežurna služba** | Emergency page, when to call, call process, safety note |
+| `/kontakt/` | **Kontakt** | Contact details and the full three-step inquiry form |
+| `/varstvo-osebnih-podatkov/` | **Zasebnost** | Privacy policy, cookies and legal notice |
 
-Every page shares the same emergency bar, header, footer and mobile action bar. The active page is highlighted in the navigation, and inner pages include breadcrumbs.
+Every page shares the same emergency bar, header, footer and mobile action bar. The active page is highlighted, and inner pages include breadcrumbs.
 
 ---
 
 ## What’s included
 
-- **Emergency line always separated** — slim dark bar with `Nujna intervencija 24/7 · 080 22 50` above the navigation, plus a fixed mobile bar.
-- **Clear navigation** — five top-level items (Storitve, Reference, O nas, Dežurna služba, Kontakt) and one persistent inquiry CTA. The mobile menu has a backdrop and its own inquiry button.
-- **Home page** — concise hero, six service cards linking to detail pages, trust band, a two-step guided inquiry with instant confirmation, three references and a compact emergency/contact band.
-- **Storitve overview** — six services as full-width rows with icons and short descriptions, a three-step process and a “something else?” note.
-- **Six service pages** — each with a page hero, scope list, process steps, three FAQs in accessible `<details>` blocks, related services and a contact panel.
-- **Reference page** — six `Vzorčni vnos` cards with a clear disclaimer.
-- **About page** — story, working principles, mission/vision, numbers and a real photo.
-- **Emergency page** — dedicated red hero, “when to call”, call process, preparation checklist and a 112 safety note.
-- **Contact page** — phone/e-mail/address/hours tiles, emergency strip and the full three-step inquiry form with live summary and confirmation screen.
-- **Homepage inquiry** — service, property type, municipality, urgency and contact in two steps, with a built-in confirmation screen and a link to the longer contact form.
-- **Readable typography** — 17 px body, 1.7 line-height, prose limited to ~68 characters, generous spacing, sentence-case headings and darker body text.
-- **Accessibility** — axe-clean on all pages, semantic landmarks, one `h1` per page, breadcrumbs, labelled forms, focus management, `prefers-reduced-motion`, print styles.
-- **Details** — sticky header, subtle scroll reveals, SVG icon sprite, self-hosted Poppins/Inter fonts, WebP hero with JPEG fallback, JSON-LD `LocalBusiness` on the home page.
+- **Emergency line** — `080 22 50` (brezplačna številka) separated from navigation in the utility bar, with a fixed mobile action bar. Emergency scope and coverage are stated on the emergency page and home band.
+- **Clear navigation** — five top-level items plus one inquiry CTA. The mobile menu has a backdrop, and only one header CTA exists in the DOM.
+- **Home page** — hero (all six services), service cards, trust band, a two-step guided inquiry with instant confirmation, three reference photographs and a closing emergency/contact band.
+- **Six service pages** — scope list, process steps, three FAQs in native `<details>` blocks, related services and a contact panel.
+- **Photographic references** — images from the company’s own website, used with neutral service captions. No invented locations, years or project metrics.
+- **Contact page** — phone/e-mail/address/hours tiles, emergency strip and the full three-step form with live summary and confirmation.
+- **Working forms** — both forms submit to a form service (FormSubmit) configured in `assets/js/form-config.js`; success and error states are driven by the actual response. No fake reference IDs and no prototype disclaimers.
+- **Legal identifiers** — Matična številka `8167117000`, Davčna številka / ID za DDV `SI41527933`, Registrski organ Okrožno sodišče v Ljubljani, in the footer and privacy page.
+- **SEO** — production canonical URLs, absolute Open Graph image, Twitter card, favicon set, web manifest, `LocalBusiness` JSON-LD with opening hours, `sitemap.xml` and `robots.txt`.
+- **Readable typography** — 17 px body, 1.7 line-height, prose limited to ~68 characters.
+- **Accessibility** — 0 axe violations on all 13 pages; semantic landmarks, one `h1`, visible breadcrumbs, labelled fields, `aria-invalid`/`role="alert"` errors, focus management, reduced-motion and print styles.
 
 ---
 
@@ -96,134 +92,89 @@ energetika-vodovod-prototype/
 │   ├── toplotne-crpalke.html
 │   └── pametni-domovi.html
 ├── assets/
-│   ├── css/
-│   │   ├── fonts.css          # self-hosted @font-face (latin + latin-ext)
-│   │   └── style.css          # design tokens + all components
+│   ├── css/                   # fonts.css + style.css
 │   ├── js/
-│   │   ├── main.js            # header, mobile menu, reveal, contact wizard
-│   │   └── home-lead.js       # compact two-step inquiry on the home page
+│   │   ├── form-config.js     # form endpoint configuration
+│   │   ├── main.js            # navigation, contact wizard, shared UI
+│   │   └── home-lead.js       # compact homepage inquiry
 │   ├── fonts/                 # Poppins + Inter woff2
-│   └── img/                   # logo, hero, about photo, icon, OG cover
+│   └── img/                   # logo, hero collage, gallery, favicons, OG image
 ├── docs/                      # README preview images
+├── sitemap.xml
+├── robots.txt
+├── site.webmanifest
 ├── .nojekyll
 └── README.md
 ```
 
-There is intentionally **no build step**. Each HTML file is standalone and includes its own copy of the shared header and footer, so the site works on any static host and is easy to hand-edit. If you change a phone number or a navigation label, update it across the HTML files (search & replace).
+Each HTML file is standalone and includes its own copy of the shared header and footer. There is no build step; hand-edit the HTML/CSS/JS directly.
 
 ---
 
-## Brand & design system
+## Forms
 
-The palette, logo and typography follow the existing brand at [energetikavodovod.si](https://www.energetikavodovod.si):
+Both forms post JSON to the endpoint in `assets/js/form-config.js`:
 
-| Token | Value | Usage |
-| --- | --- | --- |
-| `--red` | `#e60f0e` | primary accent, CTAs, links |
-| `--red-600` | `#c90d0c` | small red text, eyebrows |
-| `--red-700` | `#a80b0a` | hover / gradient end |
-| `--ink` | `#12161a` | headlines, dark sections |
-| `--ink-2` | `#1c3144` | brand navy |
-| `--surface` | `#f7f5f2` | warm section background |
-| Headings | Poppins 600 | tight tracking |
-| Body | Inter 400–600 | 17 px, 1.7 line-height |
+```js
+window.EV_FORM_CONFIG = {
+  endpoint: 'https://formsubmit.co/ajax/info@energetikavodovod.si',
+  fallbackEmail: 'info@energetikavodovod.si'
+};
+```
 
-All tokens live at the top of `assets/css/style.css` (`:root`). Changing `--red` and `--ink` re-skins the whole site.
+**Activation:** FormSubmit requires the recipient (`info@energetikavodovod.si`) to confirm the first submission by clicking the activation link in the email it receives. Until then, submissions may fail. After activation, form submissions are delivered by e-mail.
 
-Logos (`assets/img/logo.png`, `logo-white.png`) come from the live site; the favicon uses the existing icon mark.
+To use a different provider, change `endpoint` to your API or Formspree/Netlify endpoint. The payload contains `_subject`, `_template`, `name`, `phone`, `email`, `service`, `property`, `location`, `urgency`, `message`, `consent` and `_replyto`. The front-end checks the JSON response and only shows success when the request actually succeeds; on failure it keeps the form and shows a phone fallback.
+
+**Privacy:** FormSubmit is a third-party processor. This is disclosed in `zasebnost.html`. Review their terms and your DPA/GDPR position before launch. The consent checkbox blocks submission in both forms.
 
 ---
 
 ## Customising
 
-**Contacts** — the emergency number, office phone, mobile, e-mail and website appear in the shared header/footer, on the contact page and in the mobile bar. Search for `080 22 50`, `582 40 21`, `040 599 474` and `info@energetikavodovod.si` across the HTML files.
+**Contacts** — phone numbers, e-mail and address appear in the shared header/footer, contact page, privacy page and mobile bar. Emergency line: `080 22 50`; office: `+386 1 582 40 21`; mobile: `+386 40 599 474`.
 
-**Services** — each service has its own file under `storitve/` with:
+**Services** — each service has its own file under `storitve/` (scope, steps, FAQs, related services). To add a seventh service, copy a file, update the content, then add it to `storitve/index.html`, the footer and the homepage.
 
-- a page hero (title + intro),
-- a **Kaj zajema storitev** list,
-- **Kako poteka sodelovanje** steps,
-- **Pogosta vprašanja** (`<details>` blocks),
-- three related services.
+**References** — `reference.html` and the three cards on the home page use photographs from the company’s own site with neutral captions. Replace them with documented project photos and details when available; do not add locations, years or metrics without verification.
 
-To add a seventh service, copy one file, update its content, then add it to the services overview and to the footer of every page.
+**Trust signals** — the site currently uses verified numbers (20+ years, 1,000+ projects, 24/7), service breadth and photographic references. Partner/manufacturer logos, certifications and client reviews should be added only with client-supplied, verifiable assets.
 
-**References** — all six cards on `reference.html` (and the three on the home page) are marked `Vzorčni vnos`. Replace photos, titles, locations, years and metrics. The three home cards are a subset — update both files.
+**Legal** — company identifiers are in the footer and `zasebnost.html`. Confirm the registration court and legal wording with the client/legal adviser before launch.
 
-**Inquiry forms** — there are two:
-- the compact two-step form on `index.html` (`#hitro-povprasevanje`), handled by `assets/js/home-lead.js`;
-- the full three-step form on `kontakt.html` (`#povprasevanje`), handled by `assets/js/main.js`.
-
-Both are prototypes and deliberately do **not** send data anywhere. Replace their simulated submit blocks with your endpoint. The contact form also stores the last 10 submissions in `localStorage` (`ev-prototype-inquiries`). Example:
-
-```js
-const response = await fetch('https://formspree.io/f/XXXX', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-  body: JSON.stringify(data)
-});
-```
-
-Then remove the prototype note from the success panel and align the consent text with your privacy policy.
-
-**Legal pages** — `zasebnost.html` is a clearly marked placeholder. Replace it with a reviewed privacy/cookie policy before launch. Footer legal links already point to it.
-
-**Cache busting** — CSS and JS are linked with `?v=20261124d`. After editing `style.css`, `main.js` or `home-lead.js`, change that string in every HTML file so browsers (especially Safari) fetch the new version instead of a cached one.
+**Cache busting** — CSS and JS are linked with `?v=20261125b`. After editing CSS/JS, update that string in every HTML file.
 
 ---
 
-## Accessibility & performance notes
+## SEO & deployment
 
-- `axe-core` reports **0 violations** on all 13 pages, including both inquiry forms (WCAG 2 A/AA + best practice).
-- Semantic landmarks, one `h1` per page, visible breadcrumbs, skip link and visible focus rings.
-- Form: fieldsets/legends, labels for every field, `aria-invalid`, `role="alert"` errors, live step announcements through focus management and keyboard-friendly radio cards.
-- FAQ uses native `<details>`/`<summary>`; no extra JavaScript.
-- `prefers-reduced-motion` disables reveals and smooth scrolling; print CSS keeps content visible.
-- No frameworks, no tracking, no external requests. Fonts and images are local; the whole site is roughly 1.4 MB including all pages, fonts and photos.
-- Mobile inputs use 16 px type to avoid iOS auto-zoom; touch targets are at least 44 px.
+- Canonical URLs, `og:url`, absolute `og:image` and sitemap use the production domain `https://energetikavodovod.si`.
+- `sitemap.xml` and `robots.txt` are ready for the production root.
+- The GitHub Pages preview lives under `/energetika-vodovod-prototype/`. Logo links use `./` / `../` so they resolve to the site root on both the preview and the production domain. Canonicals point to production.
+- When deploying to the production domain, upload the repository contents to the web root and ensure the clean URLs in the sitemap resolve (the existing WordPress site already uses `/storitve/.../` paths).
+- **GitHub Pages:** already enabled; every push to `main` redeploys.
+- **Netlify:** publish directory = project root; no build command.
 
----
+### Before launch
 
-## Deploy
-
-**GitHub Pages** — already enabled: <https://mikey-dev404.github.io/energetika-vodovod-prototype/>. Every push to `main` redeploys automatically.
-
-**Netlify / Vercel** — drag the folder into Netlify Drop, or set the publish directory to the project root. No build command needed.
-
-**Existing WordPress site** — the layout maps cleanly to Divi/Elementor templates; use the design tokens above as the reference.
-
----
-
-## Before launch — checklist
-
-- [ ] Replace sample references with real projects and photos (home + reference page).
-- [ ] Connect the inquiry form to e-mail/CRM and test the success state.
-- [ ] Replace the placeholder privacy page and align the consent wording with GDPR.
-- [ ] Confirm the claims used in copy: 20+ years, 1.000+ projects, response time “1 delovni dan”.
-- [ ] Review service copy with the technical team (scope, typical timelines, what is not included).
-- [ ] Add a cookie consent banner if analytics/marketing scripts are introduced.
-- [ ] Set an absolute `og:image` URL once the production domain is known.
-- [ ] Test the navigation and form with real content lengths (long project names, two-line addresses).
+- [ ] Activate FormSubmit for `info@energetikavodovod.si` (or swap the endpoint).
+- [ ] Confirm emergency coverage (`Ljubljana z okolico` is currently stated) and toll-free status with the client.
+- [ ] Confirm the registration court and all legal identifiers.
+- [ ] Replace the service-photo gallery with documented project references and add partner logos/certifications/reviews.
+- [ ] Have the privacy policy and consent wording reviewed for GDPR/ZEKom-2.
+- [ ] If analytics/maps are added, implement a cookie consent banner before loading them.
+- [ ] Verify canonical URLs and redirects after the production deployment.
 
 ---
 
 ## Git
 
 ```bash
-git init
 git add .
-git commit -m "Energetika Vodovod multi-page website prototype"
-git branch -M main
-gh repo create energetika-vodovod-prototype --public --source=. --remote=origin --push
-```
-
-Or with an existing remote:
-
-```bash
-git remote add origin git@github.com:<username>/energetika-vodovod-prototype.git
-git push -u origin main
+git commit -m "Production readiness: forms, legal, SEO and content fixes"
+git push origin main
 ```
 
 ---
 
-Prototype only — content, references and the inquiry form are demonstrational. Brand assets and contact details belong to Energetika Vodovod d.o.o.
+Content and brand assets belong to Energetika Vodovod d.o.o.

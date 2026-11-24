@@ -1,7 +1,7 @@
 /* =========================================================
    Homepage — compact two-step inquiry
-   Independent from the full contact form. Prototype only:
-   the submission is simulated and never leaves the browser.
+   Independent from the full contact form. Submits to the
+   endpoint configured in assets/js/form-config.js.
    ========================================================= */
 (function () {
   'use strict';
@@ -259,17 +259,25 @@
     }
   }
 
-  function reference() {
-    const year = new Date().getFullYear();
-    const random = Math.floor(Math.random() * 9000) + 1000;
-    return 'EV-' + year + '-' + random;
+  const status = document.getElementById('home-lead-status');
+
+  function showStatus(message) {
+    if (!status) return;
+    status.textContent = message;
+    status.hidden = false;
+    status.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+  }
+
+  function clearStatus() {
+    if (!status) return;
+    status.hidden = true;
+    status.textContent = '';
   }
 
   function collect() {
     const phone = document.getElementById('hphone').value.trim();
     const email = document.getElementById('hemail').value.trim();
     return {
-      reference: reference(),
       service: selected('hservice')?.value || '',
       property: selected('hproperty')?.value || '',
       location: document.getElementById('hlocation').value.trim(),
@@ -282,11 +290,41 @@
     };
   }
 
-  function fillSuccess(data) {
-    const firstName = data.name.split(/\s+/)[0];
-    $('[data-hsuccess-name]', success).textContent = firstName;
-    $('[data-hsuccess-ref]', success).textContent = data.reference;
+  async function sendInquiry(data) {
+    const config = window.EV_FORM_CONFIG || {};
+    if (!config.endpoint) throw new Error('Manjka konfiguracija obrazca.');
 
+    const payload = {
+      _subject: 'Novo povpraševanje: ' + data.service,
+      _template: 'table',
+      _captcha: 'false',
+      _honey: '',
+      name: data.name,
+      phone: data.phone || '—',
+      email: data.email || '—',
+      service: data.service,
+      property: data.property,
+      location: data.location,
+      urgency: data.urgency,
+      message: data.message || '—',
+      consent: 'da'
+    };
+    if (data.email) payload._replyto = data.email;
+
+    const response = await fetch(config.endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    let result = {};
+    try { result = await response.json(); } catch (error) { /* non-JSON response */ }
+    if (!response.ok || result.success === false || result.success === 'false') {
+      throw new Error(result.message || 'Pošiljanje ni uspelo.');
+    }
+  }
+
+  function fillSuccess(data) {
     const summary = $('[data-hsuccess-summary]', success);
     summary.innerHTML = '';
     [
@@ -306,20 +344,20 @@
     });
   }
 
-  function submit() {
+  async function submit() {
     if (submitting) return;
+    clearStatus();
+
+    const data = collect();
     const button = $('[data-hsubmit]', form);
     const original = button.innerHTML;
     submitting = true;
     button.disabled = true;
     button.innerHTML = '<span class="btn__spinner" aria-hidden="true"></span> Pošiljam …';
 
-    window.setTimeout(() => {
-      submitting = false;
-      button.disabled = false;
-      button.innerHTML = original;
-
-      fillSuccess(collect());
+    try {
+      await sendInquiry(data);
+      fillSuccess(data);
       head.hidden = true;
       form.hidden = true;
       success.hidden = false;
@@ -327,7 +365,13 @@
       const top = card.getBoundingClientRect().top + window.scrollY - headerHeight() - 16;
       window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
       window.setTimeout(() => $('.lead-success__title', success)?.focus({ preventScroll: true }), 260);
-    }, 750);
+    } catch (error) {
+      showStatus('Povpraševanja ni bilo mogoče poslati. Poskusite znova ali pokličite 080 22 50.');
+    } finally {
+      submitting = false;
+      button.disabled = false;
+      button.innerHTML = original;
+    }
   }
 
   form.addEventListener('submit', (event) => {
@@ -370,6 +414,7 @@
       success.hidden = true;
       head.hidden = false;
       form.hidden = false;
+      clearStatus();
       setStep(1, { scroll: false });
       card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
       const first = form.querySelector('input[name="hservice"]');

@@ -1,7 +1,7 @@
 /* =========================================================
-   Energetika Vodovod — prototip
-   Interakcije: navigacija, razkrivanje, vodeno povpraševanje.
-   Brez zunanjih odvisnosti.
+   Energetika Vodovod — site interactions
+   Navigation, reveals, contact inquiry and shared UI.
+   No external dependencies.
    ========================================================= */
 (function () {
   'use strict';
@@ -15,25 +15,6 @@
 
   /* ---------- Leto v nogi ---------- */
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
-
-  /* ---------- Toast ---------- */
-  const toast = $('#toast');
-  let toastTimer;
-  function showToast(message) {
-    if (!toast) return;
-    clearTimeout(toastTimer);
-    toast.textContent = message;
-    toast.classList.add('is-visible');
-    toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 3600);
-  }
-
-  /* ---------- Prototipne povezave ---------- */
-  $$('a[data-prototype-link]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      showToast('Ta povezava v prototipu še ni povezana.');
-    });
-  });
 
   /* ---------- Header: senca ob drsenju ---------- */
   let lastScroll = -1;
@@ -382,19 +363,23 @@
   });
 
   /* ---------- Oddaja ---------- */
-  function pad(number) {
-    return String(number).padStart(4, '0');
+  const formStatus = document.getElementById('inquiry-status');
+
+  function showFormStatus(message) {
+    if (!formStatus) return;
+    formStatus.textContent = message;
+    formStatus.hidden = false;
+    formStatus.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
   }
 
-  function buildReference() {
-    const year = new Date().getFullYear();
-    const random = Math.floor(Math.random() * 9000) + 1000;
-    return 'EV-' + year + '-' + pad(random);
+  function clearFormStatus() {
+    if (!formStatus) return;
+    formStatus.hidden = true;
+    formStatus.textContent = '';
   }
 
   function collectData() {
     return {
-      reference: buildReference(),
       service: radioValue('service')?.value || '',
       property: radioValue('property')?.value || '',
       location: $('#location').value.trim(),
@@ -404,15 +389,46 @@
       phone: $('#phone').value.trim(),
       email: $('#email').value.trim(),
       message: $('#message').value.trim(),
-      consent: $('#consent').checked,
-      createdAt: new Date().toISOString()
+      consent: $('#consent').checked
     };
+  }
+
+  async function sendInquiry(data) {
+    const config = window.EV_FORM_CONFIG || {};
+    if (!config.endpoint) throw new Error('Manjka konfiguracija obrazca.');
+
+    const payload = {
+      _subject: 'Novo povpraševanje: ' + data.service,
+      _template: 'table',
+      _captcha: 'false',
+      _honey: '',
+      _replyto: data.email,
+      name: data.name,
+      phone: data.phone,
+      email: data.email,
+      service: data.service,
+      property: data.property,
+      location: data.location + (data.address ? ', ' + data.address : ''),
+      urgency: data.urgency,
+      message: data.message || '—',
+      consent: 'da'
+    };
+
+    const response = await fetch(config.endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    let result = {};
+    try { result = await response.json(); } catch (error) { /* non-JSON response */ }
+    if (!response.ok || result.success === false || result.success === 'false') {
+      throw new Error(result.message || 'Pošiljanje ni uspelo.');
+    }
   }
 
   function paintSuccess(data) {
     const urgent = /nujno/i.test(data.urgency);
-
-    $('[data-success-ref]').textContent = data.reference;
     $('[data-success-email]').textContent = data.email;
 
     const urgentEl = $('[data-success-urgent]');
@@ -442,18 +458,17 @@
     });
   }
 
-  function submitInquiry(data) {
+  async function submitInquiry(data) {
+    if (submitting) return;
     const submitButton = $('[data-submit]', form);
     const originalHTML = submitButton.innerHTML;
     submitting = true;
     submitButton.disabled = true;
     submitButton.innerHTML = '<span class="btn__spinner" aria-hidden="true"></span> Pošiljam …';
+    clearFormStatus();
 
-    setTimeout(() => {
-      submitting = false;
-      submitButton.disabled = false;
-      submitButton.innerHTML = originalHTML;
-
+    try {
+      await sendInquiry(data);
       paintSuccess(data);
 
       if (wizardTop) wizardTop.hidden = true;
@@ -465,17 +480,13 @@
         window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
         window.setTimeout(() => $('.success__title', success)?.focus({ preventScroll: true }), 300);
       }
-
-      try {
-        const stored = JSON.parse(localStorage.getItem('ev-prototype-inquiries') || '[]');
-        stored.push(data);
-        localStorage.setItem('ev-prototype-inquiries', JSON.stringify(stored.slice(-10)));
-      } catch (error) {
-        /* prototip deluje tudi brez shrambe */
-      }
-      // eslint-disable-next-line no-console
-      console.info('Prototipno povpraševanje (ni poslano na strežnik):', data);
-    }, 800);
+    } catch (error) {
+      showFormStatus('Povpraševanja ni bilo mogoče poslati. Poskusite znova ali pokličite 080 22 50.');
+    } finally {
+      submitting = false;
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalHTML;
+    }
   }
 
   form.addEventListener('submit', (event) => {
@@ -505,6 +516,7 @@
       if (wizardTop) wizardTop.hidden = false;
       form.hidden = false;
       if (success) success.hidden = true;
+      clearFormStatus();
 
       updateSummary();
       setStep(1);
