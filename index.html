@@ -123,15 +123,7 @@
       <a href="#kontakt" class="nav__link">Kontakt</a>
     </nav>
 
-    <div class="header__actions">
-      <a class="header__phone" href="tel:+38615824021">
-        <span class="header__phone-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
-        <span class="header__phone-text">
-          <span class="header__phone-label">Pisarna</span>
-          <span class="header__phone-number">01 582 40 21</span>
-        </span>
-      </a>
-      <a class="btn btn--primary btn--sm header__cta" href="#povprasevanje">
+    <div class="header__actions">      <a class="btn btn--primary btn--sm header__cta" href="#povprasevanje">
         Oddaj povpraševanje
         <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg>
       </a>
@@ -148,7 +140,6 @@
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="hero__backdrop" aria-hidden="true">
-      <div class="hero__grid"></div>
       <div class="hero__glow"></div>
     </div>
 
@@ -190,62 +181,15 @@
 
       <div class="hero__media">
         <div class="hero__media-bg" aria-hidden="true"></div>
-        <figure class="hero__frame">
+        <div class="hero__frame">
           <picture>
             <source srcset="assets/img/hero.webp" type="image/webp">
             <img src="assets/img/hero.jpg" alt="Stanovanjski kompleks s sončnimi paneli in zelenimi strehami" width="1600" height="810" fetchpriority="high">
           </picture>
-          <figcaption class="hero__caption">
-            <span class="hero__caption-label">Celovite rešitve</span>
-            <span class="hero__caption-text">elektrika · voda · zrak</span>
-          </figcaption>
-        </figure>
-
-        <a class="hero__badge" href="tel:0802250">
-          <span class="hero__badge-top">
-            <span class="live-dot live-dot--light" aria-hidden="true"></span>
-            Dežurna služba 24/7
-          </span>
-          <span class="hero__badge-phone">080 22 50</span>
-          <span class="hero__badge-hint">Pokličite tudi ob vikendih</span>
-        </a>
-
-        <div class="hero__stamp" aria-hidden="true">
-          <svg viewBox="0 0 120 120" class="hero__stamp-ring">
-            <defs>
-              <path id="stamp-path" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/>
-            </defs>
-            <text>
-              <textPath href="#stamp-path" startOffset="0">ENERGETIKA · VODOVOD · ELEKTRO · KLIMA · </textPath>
-            </text>
-          </svg>
-          <svg class="icon hero__stamp-icon" aria-hidden="true"><use href="#i-bolt"/></svg>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- ============ TEKOČI TRAK STORITEV ============ -->
-  <div class="marquee" aria-label="Naša področja: elektroinštalacije, vodovod, prezračevanje, klimatizacija, toplotne črpalke, pametni domovi">
-    <div class="marquee__track">
-      <span class="marquee__group">
-        <span>Elektroinštalacije</span><span class="marquee__dot" aria-hidden="true"></span>
-        <span>Vodovod</span><span class="marquee__dot" aria-hidden="true"></span>
-        <span>Prezračevanje</span><span class="marquee__dot" aria-hidden="true"></span>
-        <span>Klimatizacija</span><span class="marquee__dot" aria-hidden="true"></span>
-        <span>Toplotne črpalke</span><span class="marquee__dot" aria-hidden="true"></span>
-        <span>Pametni domovi</span><span class="marquee__dot" aria-hidden="true"></span>
-      </span>
-      <span class="marquee__group" aria-hidden="true">
-        <span>Elektroinštalacije</span><span class="marquee__dot"></span>
-        <span>Vodovod</span><span class="marquee__dot"></span>
-        <span>Prezračevanje</span><span class="marquee__dot"></span>
-        <span>Klimatizacija</span><span class="marquee__dot"></span>
-        <span>Toplotne črpalke</span><span class="marquee__dot"></span>
-        <span>Pametni domovi</span><span class="marquee__dot"></span>
-      </span>
-    </div>
-  </div>
 
   <!-- ============ STORITVE ============ -->
   <section class="section services" id="storitve">
@@ -275,7 +219,6 @@
           </span>
           <h3>Elektroinštalacije</h3>
           <p>Načrtovanje, izvedba in obnova električnih inštalacij v stanovanjskih, poslovnih in industrijskih objektih.</p>
-          <span class="service-card__link">Povpraševanje za storitev <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
         </a>
 
         <a class="service-card reveal" href="#povprasevanje" data-service="Vodovod">
@@ -285,7 +228,6 @@
           </span>
           <h3>Vodovod</h3>
           <p>Namestitve, popravila in nadgradnje vodovodnih sistemov — od priključka do zadnje pipe, brez presenečenj.</p>
-          <span class="service-card__link">Povpraševanje za storitev <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
         </a>
 
         <a class="service-card reveal" href="#povprasevanje" data-service="Prezračevanje">
@@ -295,7 +237,6 @@
           </span>
           <h3>Prezračevanje</h3>
           <p>Energijsko učinkoviti sistemi z rekuperacijo, ki ustvarjajo zdravo in udobno bivalno okolje.</p>
-          <span class="service-card__link">Povpraševanje za storitev <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
         </a>
 
         <a class="service-card reveal" href="#povprasevanje" data-service="Klimatizacija">
@@ -305,7 +246,6 @@
           </span>
           <h3>Klimatizacija</h3>
           <p>Ogrevanje, hlajenje in klimatski sistemi, prilagojeni prostoru, načinu uporabe in vašemu proračunu.</p>
-          <span class="service-card__link">Povpraševanje za storitev <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
         </a>
 
         <a class="service-card reveal" href="#povprasevanje" data-service="Toplotne črpalke">
@@ -315,7 +255,6 @@
           </span>
           <h3>Toplotne črpalke</h3>
           <p>Izbira, vgradnja in servis toplotnih črpalk za zanesljivo, tiho in varčno ogrevanje.</p>
-          <span class="service-card__link">Povpraševanje za storitev <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
         </a>
 
         <a class="service-card reveal" href="#povprasevanje" data-service="Pametni domovi">
@@ -325,7 +264,6 @@
           </span>
           <h3>Pametni domovi</h3>
           <p>Razsvetljava, ogrevanje, senčila in varnostni sistemi — povezani in upravljani z ene aplikacije.</p>
-          <span class="service-card__link">Povpraševanje za storitev <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
         </a>
       </div>
 
@@ -348,67 +286,35 @@
           prezračevanja in klimatizacije. Verjamemo, da je dobro opravljeno delo tisto,
           ki ga opazite šele takrat, ko nekaj ne deluje — zato delamo tako, da ne dela težav.
         </p>
-
-        <ul class="why__list">
-          <li>
-            <span class="why__check"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></span>
-            <div><strong>Kakovost</strong><span>Vrhunski materiali in preverjeni standardi izvedbe.</span></div>
-          </li>
-          <li>
-            <span class="why__check"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></span>
-            <div><strong>Točnost</strong><span>Spoštujemo dogovorjene roke in jasno komuniciramo.</span></div>
-          </li>
-          <li>
-            <span class="why__check"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></span>
-            <div><strong>Garancija</strong><span>Polna garancija na opravljene storitve in vgrajeno opremo.</span></div>
-          </li>
-          <li>
-            <span class="why__check"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></span>
-            <div><strong>Inovacije</strong><span>Sodobne tehnologije, ki znižujejo stroške in dvigujejo udobje.</span></div>
-          </li>
-        </ul>
-
         <a class="btn btn--light btn--lg" href="#povprasevanje">
           Pogovorimo se o projektu
           <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg>
         </a>
       </div>
 
-      <div class="why__stats reveal">
-        <div class="stat-card">
-          <span class="stat-card__value">20<span>+</span></span>
-          <span class="stat-card__label">let izkušenj</span>
-          <span class="stat-card__hint">na področju energetike in vodovoda</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-card__value">1.000<span>+</span></span>
-          <span class="stat-card__label">projektov</span>
-          <span class="stat-card__hint">stanovanjskih in poslovnih objektov</span>
-        </div>
-        <div class="stat-card stat-card--accent">
-          <span class="stat-card__value">24<span>/7</span></span>
-          <span class="stat-card__label">dežurna služba</span>
-          <span class="stat-card__hint">nujne intervencije vse dni v letu</span>
-        </div>
-        <div class="stat-card stat-card--team">
-          <span class="stat-card__value">Ena ekipa</span>
-          <span class="stat-card__label">za celoten projekt</span>
-          <span class="stat-card__hint">elektrika, voda, zrak, ogrevanje</span>
-        </div>
-
-        <a class="why__call" href="tel:0802250">
-          <span class="why__call-top"><span class="live-dot live-dot--light" aria-hidden="true"></span>Nujna intervencija</span>
-          <span class="why__call-number">080 22 50</span>
-          <span class="why__call-hint">Pokličite kadarkoli — tudi ponoči.</span>
-          <svg class="icon why__call-icon" aria-hidden="true"><use href="#i-phone"/></svg>
-        </a>
-      </div>
+      <ul class="why__list reveal">
+        <li>
+          <span class="why__check"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></span>
+          <div><strong>Kakovost</strong><span>Vrhunski materiali in preverjeni standardi izvedbe.</span></div>
+        </li>
+        <li>
+          <span class="why__check"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></span>
+          <div><strong>Točnost</strong><span>Spoštujemo dogovorjene roke in jasno komuniciramo.</span></div>
+        </li>
+        <li>
+          <span class="why__check"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></span>
+          <div><strong>Garancija</strong><span>Polna garancija na opravljene storitve in vgrajeno opremo.</span></div>
+        </li>
+        <li>
+          <span class="why__check"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></span>
+          <div><strong>Inovacije</strong><span>Sodobne tehnologije, ki znižujejo stroške in dvigujejo udobje.</span></div>
+        </li>
+      </ul>
     </div>
   </section>
 
   <!-- ============ POVPRAŠEVANJE ============ -->
   <section class="section inquiry" id="povprasevanje">
-    <div class="inquiry__bg" aria-hidden="true"></div>
     <div class="container">
       <div class="inquiry__head">
         <div>
@@ -420,11 +326,6 @@
             Trije kratki koraki. Izberite storitev in vrsto objekta, dodajte lokacijo ter
             kontakt — povzetek se oblikuje sproti, mi pa odgovorimo v enem delovnem dnevu.
           </p>
-          <ul class="inquiry__badges">
-            <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Brez obveznosti</li>
-            <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Odgovor v 1 delovnem dnevu</li>
-            <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Podatki ostanejo pri nas</li>
-          </ul>
         </div>
       </div>
 
@@ -785,7 +686,7 @@
         </div>
 
         <!-- Stranska plošča -->
-        <aside class="inquiry__aside" aria-label="Povzetek in pomoč">
+        <aside class="inquiry__aside" aria-label="Povzetek povpraševanja">
           <div class="summary" id="summary">
             <div class="summary__head">
               <span class="summary__title">Vaš povzetek</span>
@@ -814,16 +715,6 @@
               Odgovor v 1 delovnem dnevu. Brez obveznosti.
             </p>
           </div>
-
-          <div class="help-card">
-            <span class="help-card__top"><span class="live-dot live-dot--light" aria-hidden="true"></span>Nujna intervencija 24/7</span>
-            <a class="help-card__phone" href="tel:0802250">080 22 50</a>
-            <p>Voda, elektrika ali ogrevanje? Dežurna ekipa je dosegljiva ves dan, vse dni v letu.</p>
-            <a class="help-card__mail" href="mailto:info@energetikavodovod.si">
-              <svg class="icon icon--sm" aria-hidden="true"><use href="#i-mail"/></svg>
-              info@energetikavodovod.si
-            </a>
-          </div>
         </aside>
       </div>
     </div>
@@ -843,16 +734,6 @@
             jih zamenjajte z dejanskimi fotografijami in podatki vaših projektov.
           </p>
         </div>
-      </div>
-
-      <div class="ref-toolbar">
-        <div class="ref-filters" role="group" aria-label="Filtriraj reference">
-          <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">Vse</button>
-          <button class="filter" type="button" data-filter="elektro" aria-pressed="false">Elektroinštalacije</button>
-          <button class="filter" type="button" data-filter="vodovod" aria-pressed="false">Vodovod</button>
-          <button class="filter" type="button" data-filter="klima" aria-pressed="false">Klima in prezračevanje</button>
-        </div>
-        <p class="ref-count" aria-live="polite"><span data-ref-count>4</span> vzorčnih projektov</p>
       </div>
 
       <div class="ref-grid">
@@ -928,17 +809,6 @@
           </div>
         </article>
       </div>
-
-      <div class="ref-cta">
-        <div>
-          <h3>Vaš projekt je lahko naslednji.</h3>
-          <p>Pošljite nam kratek opis in pripravili bomo prvo oceno — brez obveznosti.</p>
-        </div>
-        <a class="btn btn--primary" href="#povprasevanje">
-          Oddaj povpraševanje
-          <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-      </div>
     </div>
   </section>
 
@@ -947,37 +817,20 @@
     <div class="call-band__bg" aria-hidden="true"></div>
     <div class="container call-band__inner">
       <div class="call-band__copy">
-        <p class="eyebrow eyebrow--light"><span class="eyebrow__line" aria-hidden="true"></span>Dežurna služba</p>
+        <p class="eyebrow eyebrow--light"><span class="eyebrow__line" aria-hidden="true"></span>Dežurna služba 24/7</p>
         <h2 class="call-band__title" id="call-band-title">Ko se ustavi voda<br>ali ugasne elektrika.</h2>
-        <p class="call-band__text">
-          Naša dežurna ekipa je na voljo 24 ur na dan, 7 dni v tednu — za nujne primere
-          in popravila izven rednega delovnega časa.
-        </p>
-        <div class="call-band__actions">
-          <a class="call-band__phone" href="tel:0802250">
-            <span class="call-band__phone-label">Pokličite 24/7</span>
-            <span class="call-band__phone-number">080 22 50</span>
-          </a>
-          <a class="btn btn--light" href="mailto:info@energetikavodovod.si">
-            <svg class="icon icon--sm" aria-hidden="true"><use href="#i-mail"/></svg>
-            Pišite nam
-          </a>
-        </div>
+        <p class="call-band__text">Dežurna ekipa je na voljo vse dni v letu — tudi izven rednega delovnega časa.</p>
       </div>
-      <ul class="call-band__points">
-        <li>
-          <span class="call-band__point-icon"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span>
-          <div><strong>Hitra intervencija</strong><span>Dežurna ekipa se odzove v najkrajšem možnem času.</span></div>
-        </li>
-        <li>
-          <span class="call-band__point-icon"><svg class="icon" aria-hidden="true"><use href="#i-tools"/></svg></span>
-          <div><strong>Ustrezna oprema</strong><span>Tehniki so opremljeni za reševanje na terenu.</span></div>
-        </li>
-        <li>
-          <span class="call-band__point-icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
-          <div><strong>Celovita pokritost</strong><span>Elektro dela, vodovod, prezračevanje in klimatizacija.</span></div>
-        </li>
-      </ul>
+      <div class="call-band__actions">
+        <a class="call-band__phone" href="tel:0802250">
+          <span class="call-band__phone-label">Pokličite 24/7</span>
+          <span class="call-band__phone-number">080 22 50</span>
+        </a>
+        <a class="btn btn--light" href="mailto:info@energetikavodovod.si">
+          <svg class="icon icon--sm" aria-hidden="true"><use href="#i-mail"/></svg>
+          Pišite nam
+        </a>
+      </div>
     </div>
   </section>
 

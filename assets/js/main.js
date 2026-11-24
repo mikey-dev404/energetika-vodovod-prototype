@@ -125,30 +125,6 @@
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
-  /* ---------- Reference: filtri ---------- */
-  const filters = $$('.filter');
-  const refCards = $$('.ref-card');
-  const refCount = $('[data-ref-count]');
-
-  filters.forEach((button) => {
-    button.addEventListener('click', () => {
-      const filter = button.dataset.filter;
-      filters.forEach((btn) => {
-        const active = btn === button;
-        btn.classList.toggle('is-active', active);
-        btn.setAttribute('aria-pressed', String(active));
-      });
-
-      let visible = 0;
-      refCards.forEach((card) => {
-        const show = filter === 'all' || card.dataset.category === filter;
-        card.hidden = !show;
-        if (show) visible += 1;
-      });
-      if (refCount) refCount.textContent = String(visible);
-    });
-  });
-
   /* ---------- Povpraševanje: stanje ---------- */
   const wizard = $('#wizard');
   const form = $('#inquiry-form');
