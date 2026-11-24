@@ -9,6 +9,8 @@ Built as a dependency-free static site (HTML + CSS + vanilla JS), with a dedicat
 
 ![Home page](docs/preview-desktop.jpg)
 
+![Homepage guided inquiry](docs/preview-home-inquiry.jpg)
+
 | Service detail page | Contact & inquiry |
 | --- | --- |
 | ![Service page](docs/preview-service.jpg) | ![Contact page](docs/preview-contact.jpg) |
@@ -39,7 +41,7 @@ The services overview uses a folder URL (`/storitve/`). A local server handles t
 
 | URL | Page | Content |
 | --- | --- | --- |
-| `/` | **Domov** | Hero, six services, why us, three references, emergency band |
+| `/` | **Domov** | Hero, six services, why us, two-step inquiry, three references, emergency band |
 | `/storitve/` | **Storitve** | Six services as a scannable index, process, contact note |
 | `/storitve/elektroinstalacije.html` | Elektroinštalacije | Scope, process, FAQ, related services |
 | `/storitve/vodovod.html` | Vodovod | Scope, process, FAQ, related services |
@@ -61,13 +63,14 @@ Every page shares the same emergency bar, header, footer and mobile action bar. 
 
 - **Emergency line always separated** — slim dark bar with `Nujna intervencija 24/7 · 080 22 50` above the navigation, plus a fixed mobile bar.
 - **Clear navigation** — five top-level items (Storitve, Reference, O nas, Dežurna služba, Kontakt) and one persistent inquiry CTA. The mobile menu has a backdrop and its own inquiry button.
-- **Home page** — concise hero, six service cards linking to detail pages, trust band, three references and a compact emergency/contact band.
+- **Home page** — concise hero, six service cards linking to detail pages, trust band, a two-step guided inquiry with instant confirmation, three references and a compact emergency/contact band.
 - **Storitve overview** — six services as full-width rows with icons and short descriptions, a three-step process and a “something else?” note.
 - **Six service pages** — each with a page hero, scope list, process steps, three FAQs in accessible `<details>` blocks, related services and a contact panel.
 - **Reference page** — six `Vzorčni vnos` cards with a clear disclaimer.
 - **About page** — story, working principles, mission/vision, numbers and a real photo.
 - **Emergency page** — dedicated red hero, “when to call”, call process, preparation checklist and a 112 safety note.
 - **Contact page** — phone/e-mail/address/hours tiles, emergency strip and the full three-step inquiry form with live summary and confirmation screen.
+- **Homepage inquiry** — service, property type, municipality, urgency and contact in two steps, with a built-in confirmation screen and a link to the longer contact form.
 - **Readable typography** — 17 px body, 1.7 line-height, prose limited to ~68 characters, generous spacing, sentence-case headings and darker body text.
 - **Accessibility** — axe-clean on all pages, semantic landmarks, one `h1` per page, breadcrumbs, labelled forms, focus management, `prefers-reduced-motion`, print styles.
 - **Details** — sticky header, subtle scroll reveals, SVG icon sprite, self-hosted Poppins/Inter fonts, WebP hero with JPEG fallback, JSON-LD `LocalBusiness` on the home page.
@@ -97,7 +100,8 @@ energetika-vodovod-prototype/
 │   │   ├── fonts.css          # self-hosted @font-face (latin + latin-ext)
 │   │   └── style.css          # design tokens + all components
 │   ├── js/
-│   │   └── main.js            # header, mobile menu, reveal, inquiry wizard
+│   │   ├── main.js            # header, mobile menu, reveal, contact wizard
+│   │   └── home-lead.js       # compact two-step inquiry on the home page
 │   ├── fonts/                 # Poppins + Inter woff2
 │   └── img/                   # logo, hero, about photo, icon, OG cover
 ├── docs/                      # README preview images
@@ -146,7 +150,11 @@ To add a seventh service, copy one file, update its content, then add it to the 
 
 **References** — all six cards on `reference.html` (and the three on the home page) are marked `Vzorčni vnos`. Replace photos, titles, locations, years and metrics. The three home cards are a subset — update both files.
 
-**Inquiry form** — lives on `kontakt.html` (`#povprasevanje`). The prototype deliberately does **not** send data anywhere. On submit, `submitInquiry()` in `assets/js/main.js` simulates a request, builds the success summary and stores the last 10 submissions in `localStorage` (`ev-prototype-inquiries`). Replace the `setTimeout` block with your endpoint:
+**Inquiry forms** — there are two:
+- the compact two-step form on `index.html` (`#hitro-povprasevanje`), handled by `assets/js/home-lead.js`;
+- the full three-step form on `kontakt.html` (`#povprasevanje`), handled by `assets/js/main.js`.
+
+Both are prototypes and deliberately do **not** send data anywhere. Replace their simulated submit blocks with your endpoint. The contact form also stores the last 10 submissions in `localStorage` (`ev-prototype-inquiries`). Example:
 
 ```js
 const response = await fetch('https://formspree.io/f/XXXX', {
@@ -160,18 +168,18 @@ Then remove the prototype note from the success panel and align the consent text
 
 **Legal pages** — `zasebnost.html` is a clearly marked placeholder. Replace it with a reviewed privacy/cookie policy before launch. Footer legal links already point to it.
 
-**Cache busting** — CSS and JS are linked with `?v=20261124c`. After editing `style.css` or `main.js`, change that string in every HTML file so browsers (especially Safari) fetch the new version instead of a cached one.
+**Cache busting** — CSS and JS are linked with `?v=20261124d`. After editing `style.css`, `main.js` or `home-lead.js`, change that string in every HTML file so browsers (especially Safari) fetch the new version instead of a cached one.
 
 ---
 
 ## Accessibility & performance notes
 
-- `axe-core` reports **0 violations** on all 13 pages (WCAG 2 A/AA + best practice).
+- `axe-core` reports **0 violations** on all 13 pages, including both inquiry forms (WCAG 2 A/AA + best practice).
 - Semantic landmarks, one `h1` per page, visible breadcrumbs, skip link and visible focus rings.
 - Form: fieldsets/legends, labels for every field, `aria-invalid`, `role="alert"` errors, live step announcements through focus management and keyboard-friendly radio cards.
 - FAQ uses native `<details>`/`<summary>`; no extra JavaScript.
 - `prefers-reduced-motion` disables reveals and smooth scrolling; print CSS keeps content visible.
-- No frameworks, no tracking, no external requests. Fonts and images are local; the whole site is roughly 1.3 MB including all pages, fonts and photos.
+- No frameworks, no tracking, no external requests. Fonts and images are local; the whole site is roughly 1.4 MB including all pages, fonts and photos.
 - Mobile inputs use 16 px type to avoid iOS auto-zoom; touch targets are at least 44 px.
 
 ---
