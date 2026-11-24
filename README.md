@@ -160,6 +160,8 @@ Then remove the prototype note from the success panel and align the consent text
 
 **Legal pages** — `zasebnost.html` is a clearly marked placeholder. Replace it with a reviewed privacy/cookie policy before launch. Footer legal links already point to it.
 
+**Cache busting** — CSS and JS are linked with `?v=20261124c`. After editing `style.css` or `main.js`, change that string in every HTML file so browsers (especially Safari) fetch the new version instead of a cached one.
+
 ---
 
 ## Accessibility & performance notes
