@@ -4,6 +4,9 @@ A modern, responsive, single-page prototype for **Energetika Vodovod d.o.o.** �
 
 Built as a dependency-free static site (HTML + CSS + vanilla JS) so it can be previewed instantly, dropped on any static host, or used as a design reference for the existing WordPress/Divi site.
 
+**Live preview:** <https://mikey-dev404.github.io/energetika-vodovod-prototype/>  
+**Repository:** <https://github.com/mikey-dev404/energetika-vodovod-prototype>
+
 ![Desktop preview](docs/preview-desktop.jpg)
 
 | Guided inquiry form | Mobile |
@@ -125,7 +128,7 @@ Then remove the line *“Prototip: obrazec je demonstracijski …”* from the s
 
 ## Deploy
 
-**GitHub Pages** — push to `main`, then *Settings → Pages → Build and deployment → Deploy from a branch → `main` / `(root)`*.
+**GitHub Pages** — already enabled for this repository: <https://mikey-dev404.github.io/energetika-vodovod-prototype/>. Every push to `main` redeploys automatically (*Settings → Pages → Deploy from a branch → `main` / `(root)`*).
 
 **Netlify / Vercel** — drag the folder into Netlify Drop, or set the publish directory to the project root. No build command needed.
 
