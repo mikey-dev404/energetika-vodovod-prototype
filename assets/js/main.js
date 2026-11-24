@@ -56,6 +56,7 @@
     nav.classList.remove('is-open');
     navToggle.setAttribute('aria-expanded', 'false');
     navToggle.setAttribute('aria-label', 'Odpri meni');
+    document.body.classList.remove('nav-open');
   }
 
   if (navToggle && nav) {
@@ -63,6 +64,7 @@
       const isOpen = nav.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', String(isOpen));
       navToggle.setAttribute('aria-label', isOpen ? 'Zapri meni' : 'Odpri meni');
+      document.body.classList.toggle('nav-open', isOpen);
     });
 
     navLinks.forEach((link) => link.addEventListener('click', closeNav));
@@ -79,34 +81,10 @@
       if (nav.contains(event.target) || navToggle.contains(event.target)) return;
       closeNav();
     });
-  }
 
-  /* ---------- Aktivna povezava med drsenjem ---------- */
-  const spySections = ['storitve', 'zakaj', 'reference', 'povprasevanje', 'kontakt']
-    .map((id) => document.getElementById(id))
-    .filter(Boolean);
-
-  function setActiveNav(id) {
-    navLinks.forEach((link) => {
-      const active = link.getAttribute('href') === '#' + id;
-      link.classList.toggle('is-active', active);
-      if (active) link.setAttribute('aria-current', 'true');
-      else link.removeAttribute('aria-current');
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1120 && nav.classList.contains('is-open')) closeNav();
     });
-  }
-
-  if ('IntersectionObserver' in window && spySections.length) {
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) setActiveNav(entry.target.id);
-      });
-    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
-    spySections.forEach((section) => spy.observe(section));
-
-    window.addEventListener('scroll', () => {
-      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8;
-      if (atBottom) setActiveNav('kontakt');
-    }, { passive: true });
   }
 
   /* ---------- Razkrivanje ob drsenju ---------- */
@@ -535,18 +513,6 @@
       wizard.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
     });
   }
-
-  /* ---------- Predizbira storitve s kartic ---------- */
-  $$('[data-service]').forEach((card) => {
-    card.addEventListener('click', () => {
-      const service = card.dataset.service;
-      const input = $$('input[name="service"]', form).find((el) => el.value === service);
-      if (!input) return;
-      input.checked = true;
-      updateSummary();
-      showToast('Predizbrana storitev: ' + service);
-    });
-  });
 
   updateSummary();
   setStep(1, { scroll: false, focus: false });
