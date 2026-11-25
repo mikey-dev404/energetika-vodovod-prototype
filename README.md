@@ -9,19 +9,27 @@ Dependency-free static HTML, CSS and vanilla JS with eight dedicated service pag
 
 > **Private-repo migration:** Netlify config is prepared in `netlify.toml`; once the Netlify site is live, the GitHub repo can be switched to private and GitHub Pages disabled. Setup and verification: [`docs/netlify-private-preview.md`](docs/netlify-private-preview.md).
 
-![Home page](docs/preview-desktop.jpg)
+![Homepage hero](docs/readme-hero.jpg)
 
-| Homepage inquiry | References |
-| --- | --- |
-| ![Homepage inquiry](docs/preview-home-inquiry.jpg) | ![Filterable references](docs/preview-references.jpg) |
+*The current rebrand — warm paper, deep petrol, signal red, Fraunces display type and the client’s film in a framed card. Not the original WordPress theme.*
 
 | Mission section | Daily tips |
 | --- | --- |
-| ![Mission section](docs/preview-mission.jpg) | ![Daily tips](docs/preview-tips.jpg) |
+| ![Mission section](docs/readme-mission.jpg) | ![Daily tips](docs/readme-tips.jpg) |
 
-| Service page hero | Reference lightbox |
+| Homepage inquiry | Contact page |
 | --- | --- |
-| ![Service page hero](docs/preview-service.jpg) | ![Reference lightbox](docs/preview-lightbox.jpg) |
+| ![Homepage inquiry](docs/readme-inquiry.jpg) | ![Contact page](docs/readme-contact.jpg) |
+
+| Service page | References |
+| --- | --- |
+| ![Service page](docs/readme-service.jpg) | ![Filterable references](docs/readme-references.jpg) |
+
+![Reference lightbox](docs/readme-lightbox.jpg)
+
+<p align="center">
+  <img src="docs/readme-mobile.jpg" width="320" alt="Mobile view of the Energetika Vodovod homepage">
+</p>
 
 ---
 
