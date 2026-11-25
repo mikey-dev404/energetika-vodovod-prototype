@@ -73,9 +73,9 @@ Every page shares the same emergency bar, header, footer and mobile action bar. 
 
 - **Emergency line** — `080 22 50` (brezplačna številka) separated from navigation in the utility bar, with a fixed mobile action bar. Emergency scope and coverage are stated on the emergency page and home band.
 - **Clear navigation** — five top-level items plus one inquiry CTA. The mobile menu has a backdrop, and only one header CTA exists in the DOM.
-- **Home page** — cinematic video hero with the live site’s interior film, service ticker, eight service cards, mission/value split, daily-tips carousel, two-step guided inquiry and a closing emergency/contact band.
+- **Home page** — editorial paper hero with the client’s film in a framed card, light service ticker, eight service cards, dark petrol mission/value split, daily-tips carousel, two-step guided inquiry and a closing emergency/contact band.
 - **Eight service pages** — scope list, process steps, three FAQs in native `<details>` blocks, related services and a contact panel. The two restored live-site scopes are Vzdrževanje and Svetovanje.
-- **Photo-led page heroes** — each service and content page opens with a dark cinematic hero using the client’s own work photography.
+- **Photo-led page heroes** — each service and content page opens with a light split hero: serif title on warm paper, work photography in a right-hand panel.
 - **Photographic references** — six photographs from the company’s own website, with neutral captions, scope tags, category filters and an accessible lightbox. No invented locations, years or project metrics.
 - **Contact page** — phone/e-mail/address/hours tiles, emergency strip and the full three-step form with live summary and confirmation.
 - **Form handling** — both forms attempt to POST to the endpoint in `assets/js/form-config.js`; success is shown only on a real success response. **Verified 25 Nov 2026:** the FormSubmit AJAX endpoint is blocked by CORS from the GitHub Pages origin, so the forms currently fall back to a prefilled e-mail link instead of pretending to send. A CORS-enabled/server endpoint is required for automatic delivery.
@@ -83,6 +83,7 @@ Every page shares the same emergency bar, header, footer and mobile action bar. 
 - **Migration / 301s** — legacy WordPress URLs (including `/vzdrzevanje/` and `/svetovanje/`) and existing clean URLs 301 to the new `.html` files. Clean URLs without `.html` require a folder-based restructure; the safe phase-2 plan is in [`docs/redirects.md`](docs/redirects.md).
 - **Legal identifiers** — Matična številka `8167117000`, Davčna številka / ID za DDV `SI41527933`, Registrski organ Okrožno sodišče v Ljubljani, in the footer and privacy page.
 - **SEO** — production canonical URLs, absolute Open Graph image, Twitter card, favicon set, web manifest, `LocalBusiness` JSON-LD with opening hours, `sitemap.xml` and `robots.txt`.
+- **Rebrand** — warm paper, deep petrol, signal red; Fraunces display serif + Inter; sharp editorial controls. Deliberately distinct from the live WordPress site while keeping the client’s logo, photography, video and content.
 - **Living details** — animated counters, a scroll progress bar, back-to-top control, a daily-tips carousel, filterable references and a keyboard-accessible lightbox. All motion respects `prefers-reduced-motion`.
 - **Readable typography** — 17 px body, 1.7 line-height, prose limited to ~68 characters.
 - **Accessibility** — 0 axe violations on all 15 pages; semantic landmarks, one `h1`, visible breadcrumbs, labelled fields, `aria-invalid`/`role="alert"` errors, focus management, reduced-motion and print styles.
@@ -117,7 +118,7 @@ energetika-vodovod-prototype/
 │   │   ├── enhancements.js    # counters, filters, lightbox, scroll UI
 │   │   ├── main.js            # navigation, contact wizard, shared UI
 │   │   └── home-lead.js       # compact homepage inquiry
-│   ├── fonts/                 # Poppins + Inter woff2
+│   ├── fonts/                 # Fraunces + Inter woff2 + OFL licences
 │   └── img/                   # logo, hero poster, gallery, favicons, OG image
 ├── docs/                      # previews + migration/verification notes
 ├── _redirects                 # Netlify legacy 301s
