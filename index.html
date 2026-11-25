@@ -7,7 +7,7 @@
 <!--
   © 2026 mikey-dev404. All rights reserved.
   Proprietary source code and design implementation.
-  Client brand assets (logo, photography, copy) remain the property of
+  Client brand assets (logo, photography, video, copy) remain the property of
   Energetika Vodovod d.o.o. and are used with permission.
 -->
 <title>Energetika Vodovod — elektrika, vodovod in udobje doma</title>
@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://energetikavodovod.si/assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Energetika Vodovod — elektroinštalacije, vodovod, prezračevanje in klimatizacija">
+<meta property="og:image:alt" content="Uživajte brezskrbno udobje doma — Energetika Vodovod">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
@@ -47,7 +47,7 @@
   "foundingDate": "2018-03-19",
   "url": "https://energetikavodovod.si/",
   "logo": "https://energetikavodovod.si/assets/img/logo.png",
-  "image": "https://energetikavodovod.si/assets/img/hero.jpg",
+  "image": "https://energetikavodovod.si/assets/img/hero-living.jpg",
   "description": "Celovite storitve na področju elektroinštalacij, vodovoda, prezračevanja, klimatizacije, toplotnih črpalk, pametnih domov, vzdrževanja in svetovanja.",
   "telephone": "+386 1 582 40 21",
   "email": "info@energetikavodovod.si",
@@ -246,19 +246,22 @@
   </div>
 </header>
 <main id="main">
-<section class="hero">
-  <div class="hero__backdrop" aria-hidden="true"><div class="hero__glow"></div></div>
+<section class="hero hero--cinema">
+  <video class="hero__video" muted loop playsinline preload="metadata" poster="assets/img/hero-living.jpg" aria-hidden="true" tabindex="-1">
+    <source src="assets/video/hero-living.mp4" type="video/mp4">
+  </video>
+  <div class="hero__shade" aria-hidden="true"></div>
   <div class="container hero__inner">
     <div class="hero__copy">
-      <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Energetika · vodovod · udobje</p>
-      <h1 class="hero__title">Brezskrbno<br> <span class="hero__accent">udobje</span> doma.</h1>
+      <p class="eyebrow eyebrow--light"><span class="eyebrow__line" aria-hidden="true"></span>Energetika Vodovod</p>
+      <h1 class="hero__title">Uživajte brezskrbno<br> <span class="hero__accent">udobje doma.</span></h1>
       <p class="hero__lead">
-        Celovite rešitve na področju elektrike, vodovoda, prezračevanja, klimatizacije, toplotnih črpalk, pametnih domov, vzdrževanja in svetovanja —
-        za stanovanjske, poslovne in industrijske objekte. Od načrtovanja do brezhibne izvedbe.
+        Ne glede na to, ali gre za dom, pisarno ali industrijski objekt, poskrbimo za elektriko, vodo, zrak in udobje —
+        od načrtovanja do brezhibne izvedbe.
       </p>
       <div class="hero__ctas">
-        <a class="btn btn--danger btn--lg" href="tel:0802250"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Nujni klic (24/7)</a>
-        <a class="btn btn--outline btn--lg" href="#hitro-povprasevanje">Oddaj povpraševanje <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></a>
+        <a class="btn btn--danger btn--lg" href="#hitro-povprasevanje">Pošljite povpraševanje <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--outline-light btn--lg" href="o-nas.html">Preberite več <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <dl class="hero__stats">
         <div class="hero__stat">
@@ -266,37 +269,44 @@
           <dd><span data-count="20">20</span><span>+</span></dd>
         </div>
         <div class="hero__stat">
-          <dt>Zaključenih projektov</dt>
-          <dd><span data-count="1000">1.000</span><span>+</span></dd>
-        </div>
-        <div class="hero__stat">
           <dt>Dežurna služba</dt>
           <dd>24<span>/7</span></dd>
         </div>
+        <div class="hero__stat">
+          <dt>Projektov</dt>
+          <dd><span data-count="1000">1.000</span><span>+</span></dd>
+        </div>
       </dl>
-    </div>
-    <div class="hero__media">
-      <div class="hero__media-bg" aria-hidden="true"></div>
-      <div class="hero__frame">
-        <picture>
-          <source srcset="assets/img/hero.webp" type="image/webp">
-          <img src="assets/img/hero.jpg" alt="Elektroinštalacije, klimatizacija, prezračevanje in električna omarica — izvedbe Energetika Vodovod" width="1600" height="810" fetchpriority="high">
-        </picture>
-      </div>
+      <a class="hero__scroll" href="#storitve" aria-label="Pomaknite se do storitev">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="section services">
+<nav class="service-ticker" aria-label="Hitre povezave do storitev">
+  <div class="container service-ticker__inner">
+    <a href="storitve/vodovod.html">Vodovod</a><span class="service-ticker__dot" aria-hidden="true"></span>
+    <a href="storitve/prezracevanje.html">Prezračevanje</a><span class="service-ticker__dot" aria-hidden="true"></span>
+    <a href="storitve/klimatizacija.html">Klimatizacija</a><span class="service-ticker__dot" aria-hidden="true"></span>
+    <a href="storitve/toplotne-crpalke.html">Toplotne črpalke</a><span class="service-ticker__dot" aria-hidden="true"></span>
+    <a href="storitve/pametni-domovi.html">Pametni domovi</a><span class="service-ticker__dot" aria-hidden="true"></span>
+    <a href="storitve/vzdrzevanje.html">Vzdrževanje</a><span class="service-ticker__dot" aria-hidden="true"></span>
+    <a href="storitve/svetovanje.html">Svetovanje</a><span class="service-ticker__dot" aria-hidden="true"></span>
+    <a href="storitve/elektroinstalacije.html">Elektroinštalacije</a>
+  </div>
+</nav>
+
+<section class="section services" id="storitve">
   <div class="container">
     <div class="section__head">
       <div class="section__head-main">
         <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Storitve</p>
-        <h2 class="section__title">Kaj lahko<br> uredimo za vas.</h2>
+        <h2 class="section__title">Vsak projekt je<br> izziv, ki ga rešujemo<br> <span class="text-red">z inovativnimi rešitvami.</span></h2>
       </div>
       <div class="section__head-aside">
-        <p>Osem področij, ena odgovorna ekipa. Vsako storitev si lahko ogledate podrobneje — z opisom izvedbe, potekom dela in odgovori na pogosta vprašanja.</p>
-        <a class="link-arrow" href="storitve/">Vse storitve <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <p>Osem področij, ena odgovorna ekipa. Od načrtovanja do izvedbe in rednega vzdrževanja.</p>
+        <a class="btn btn--danger btn--sm" href="storitve/">Vse storitve <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
     <div class="service-grid">
@@ -368,13 +378,13 @@
   </div>
 </section>
 
-<section class="section why">
+<section class="section mission">
   <div class="container why__inner">
     <div class="why__copy reveal">
-      <p class="eyebrow eyebrow--light"><span class="eyebrow__line" aria-hidden="true"></span>Zakaj Energetika Vodovod</p>
-      <h2 class="section__title">Zanesljivost, ki jo<br> čutite vsak dan.</h2>
-      <p class="why__lead">Smo slovensko podjetje z dolgoletnimi izkušnjami na področju elektro del, vodovoda, prezračevanja, klimatizacije, toplotnih črpalk, pametnih domov, vzdrževanja in svetovanja. Verjamemo, da je dobro opravljeno delo tisto, ki ga opazite šele takrat, ko nekaj ne deluje.</p>
-      <a class="btn btn--light btn--lg" href="o-nas.html">Več o podjetju <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Naša misija</p>
+      <h2 class="section__title">Celovite rešitve, ki<br> <span class="text-red">presegajo pričakovanja.</span></h2>
+      <p class="why__lead">Naša misija je strankam ponuditi celovite in prilagojene rešitve, ki izboljšujejo kakovost bivanja in delovnega okolja. Z inovativnimi pristopi, najnovejšo tehnologijo in visoko usposobljeno ekipo zagotavljamo storitve, ki presegajo pričakovanja.</p>
+      <a class="btn btn--danger btn--lg" href="o-nas.html">Preberite več <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
     <ul class="why__list reveal">
       <li><span class="why__check"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg></span><div><strong>Kakovost</strong> <span>Vrhunski materiali in preverjeni standardi izvedbe.</span></div></li>
@@ -386,35 +396,48 @@
 </section>
 
   <!-- ============ HITRO POVPRAŠEVANJE ============ -->
-  <section class="section section--tight home-process" id="potek">
+  <section class="section section--tight tips" aria-labelledby="tips-title">
     <div class="container">
-      <div class="section__head">
-        <div class="section__head-main">
-          <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Potek dela</p>
-          <h2 class="section__title">Od prvega klica<br> do predaje.</h2>
+      <div class="tips__head">
+        <div>
+          <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Nasveti za vsak dan</p>
+          <h2 class="section__title" id="tips-title">Majhne navade,<br> ki ohranjajo vaš dom varen.</h2>
         </div>
-        <div class="section__head-aside">
-          <p>Jasen potek brez presenečenj. Vnaprej veste, kdo pride, kaj bo naredil in kdaj bo končano.</p>
-          <a class="link-arrow" href="storitve/">Vse storitve <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <div class="tips__nav" data-tips-nav>
+          <button class="tips__arrow" type="button" aria-label="Prejšnji nasvet" data-tips-prev disabled>
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>
+          </button>
+          <button class="tips__arrow" type="button" aria-label="Naslednji nasvet" data-tips-next>
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </button>
         </div>
       </div>
-      <ol class="steps home-process__steps">
-        <li class="reveal">
-          <span class="steps__num">01</span>
-          <h3>Pogovor in ogled</h3>
-          <p>Prisluhnemo potrebam, pregledamo objekt in preverimo, kaj je izvedljivo.</p>
-        </li>
-        <li class="reveal">
-          <span class="steps__num">02</span>
-          <h3>Ponudba in terminski plan</h3>
-          <p>Pripravimo jasno ponudbo z obsegom del in predvidenim potekom.</p>
-        </li>
-        <li class="reveal">
-          <span class="steps__num">03</span>
-          <h3>Izvedba in predaja</h3>
-          <p>Delo izvedemo po dogovoru, preverimo delovanje in predamo objekt.</p>
-        </li>
-      </ol>
+      <div class="tips__track" data-tips-track tabindex="0" aria-label="Nasveti za vsak dan">
+        <article class="tips__card">
+          <img src="assets/img/galerija-elektro.jpg" alt="Preverjanje električne vtičnice z merilnikom" width="800" height="520" loading="lazy">
+          <div class="tips__body">
+            <span class="tips__cat">Elektro</span>
+            <h3>Redno preverjajte naprave in vtičnice.</h3>
+            <p>Opazite razpoke, zažgane sledi ali nenavaden vonj? Napravo izklopite in pokličite strokovnjaka.</p>
+          </div>
+        </article>
+        <article class="tips__card">
+          <img src="assets/img/galerija-klimatizacija.jpg" alt="Notranja enota klimatske naprave" width="800" height="520" loading="lazy">
+          <div class="tips__body">
+            <span class="tips__cat">Klima</span>
+            <h3>Čistite filtre klimatske naprave.</h3>
+            <p>Redno čiščenje ohranja učinkovitost, zmanjša prah in prepreči neprijetne vonjave v prostoru.</p>
+          </div>
+        </article>
+        <article class="tips__card">
+          <img src="assets/img/galerija-vodovod.jpg" alt="Popravilo vodovodne napeljave" width="800" height="520" loading="lazy">
+          <div class="tips__body">
+            <span class="tips__cat">Vodovod</span>
+            <h3>Preverite spoje in pipe.</h3>
+            <p>Majhno puščanje lahko povzroči veliko škodo. Ob prvih znakih ukrepajte pravočasno.</p>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -694,74 +717,6 @@
       </div>
     </div>
   </section>
-
-<section class="section section--tight references">
-  <div class="container">
-    <div class="section__head">
-      <div class="section__head-main">
-        <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Reference</p>
-        <h2 class="section__title">Naše delo<br> v praksi.</h2>
-      </div>
-      <div class="section__head-aside">
-        <p>Izbrane fotografije iz naših izvedb. Za dodatne reference, certifikate in ogled projektov nas kontaktirajte.</p>
-        <a class="link-arrow" href="reference.html">Vse reference <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-    <div class="ref-grid ref-grid--3">
-      <article class="ref-card" data-category="elektro">
-  <div class="ref-card__media">
-  <a class="ref-card__open" href="assets/img/galerija-elektro.jpg" data-lightbox aria-haspopup="dialog" data-src="assets/img/galerija-elektro.jpg" data-title="Meritve in prenova električne inštalacije" data-alt="Meritve električne inštalacije z merilnikom" aria-label="Odpri fotografijo: Meritve in prenova električne inštalacije">
-    <img src="assets/img/galerija-elektro.jpg" alt="Meritve električne inštalacije z merilnikom" width="800" height="520" loading="lazy">
-    <span class="ref-card__zoom" aria-hidden="true">Povečaj</span>
-  </a>
-  </div>
-  <div class="ref-card__body">
-    <p class="ref-card__cat">Elektroinštalacije</p>
-    <h3>Meritve in prenova električne inštalacije</h3>
-    <p class="ref-card__text">Preverjanje vtičnic, meritve in odprava napak na obstoječi napeljavi.</p>
-    <ul class="ref-card__tags" aria-label="Obseg del">
-    <li>Meritve</li>
-    <li>Prenova inštalacije</li>
-  </ul>
-  </div>
-</article>
-<article class="ref-card" data-category="prezracevanje">
-  <div class="ref-card__media">
-  <a class="ref-card__open" href="assets/img/galerija-prezracevanje.jpg" data-lightbox aria-haspopup="dialog" data-src="assets/img/galerija-prezracevanje.jpg" data-title="Razvod prezračevanja z rekuperacijo" data-alt="Razvod prezračevanja iz pocinkanih kanalov" aria-label="Odpri fotografijo: Razvod prezračevanja z rekuperacijo">
-    <img src="assets/img/galerija-prezracevanje.jpg" alt="Razvod prezračevanja iz pocinkanih kanalov" width="800" height="520" loading="lazy">
-    <span class="ref-card__zoom" aria-hidden="true">Povečaj</span>
-  </a>
-  </div>
-  <div class="ref-card__body">
-    <p class="ref-card__cat">Prezračevanje</p>
-    <h3>Razvod prezračevanja z rekuperacijo</h3>
-    <p class="ref-card__text">Načrtovanje in vgradnja kanalov za svež zrak brez izgube toplote.</p>
-    <ul class="ref-card__tags" aria-label="Obseg del">
-    <li>Razvod kanalov</li>
-    <li>Rekuperacija</li>
-  </ul>
-  </div>
-</article>
-<article class="ref-card" data-category="klimatizacija">
-  <div class="ref-card__media">
-  <a class="ref-card__open" href="assets/img/galerija-klimatizacija.jpg" data-lightbox aria-haspopup="dialog" data-src="assets/img/galerija-klimatizacija.jpg" data-title="Vgradnja klimatske naprave" data-alt="Notranja enota klimatske naprave na steni" aria-label="Odpri fotografijo: Vgradnja klimatske naprave">
-    <img src="assets/img/galerija-klimatizacija.jpg" alt="Notranja enota klimatske naprave na steni" width="800" height="520" loading="lazy">
-    <span class="ref-card__zoom" aria-hidden="true">Povečaj</span>
-  </a>
-  </div>
-  <div class="ref-card__body">
-    <p class="ref-card__cat">Klimatizacija</p>
-    <h3>Vgradnja klimatske naprave</h3>
-    <p class="ref-card__text">Izbira in montaža notranje enote ter priklop na zunanjo enoto.</p>
-    <ul class="ref-card__tags" aria-label="Obseg del">
-    <li>Vgradnja</li>
-    <li>Notranja enota</li>
-  </ul>
-  </div>
-</article>
-    </div>
-  </div>
-</section>
 
 <section class="call-band">
   <div class="call-band__bg" aria-hidden="true"></div>

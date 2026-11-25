@@ -12,6 +12,17 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const formatNumber = (value) => String(value).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
+  const heroVideo = $('.hero__video');
+  if (heroVideo) {
+    if (reduceMotion) {
+      heroVideo.pause();
+    } else {
+      heroVideo.play().catch(() => {
+        /* Autoplay can be blocked; the poster remains visible. */
+      });
+    }
+  }
+
   /* ---------- Animated counters ---------- */
   const counters = $$('[data-count]');
   if (counters.length) {
@@ -48,6 +59,19 @@
       if (!reduceMotion) counter.textContent = '0';
       observer.observe(counter);
     });
+  }
+
+
+  /* ---------- Hide the mobile action bar while the hero is in view ---------- */
+  const homeHero = $('.hero');
+  const mobileBar = $('.mobile-bar');
+  if (homeHero && mobileBar) {
+    const updateMobileBar = () => {
+      mobileBar.hidden = window.scrollY < homeHero.offsetHeight - 80;
+    };
+    window.addEventListener('scroll', updateMobileBar, { passive: true });
+    window.addEventListener('resize', updateMobileBar);
+    updateMobileBar();
   }
 
   /* ---------- Scroll progress + back to top ---------- */
@@ -136,6 +160,35 @@
       button.addEventListener('click', () => applyFilter(button.dataset.filter));
     });
     applyFilter('all');
+  }
+
+
+  /* ---------- Daily tips carousel ---------- */
+  const tipsTrack = $('[data-tips-track]');
+  if (tipsTrack) {
+    const prev = $('[data-tips-prev]');
+    const next = $('[data-tips-next]');
+    const step = () => {
+      const card = $('.tips__card', tipsTrack);
+      return card ? card.getBoundingClientRect().width + 16 : 360;
+    };
+    const updateButtons = () => {
+      if (!prev || !next) return;
+      const max = tipsTrack.scrollWidth - tipsTrack.clientWidth - 2;
+      prev.disabled = tipsTrack.scrollLeft < 48;
+      next.disabled = tipsTrack.scrollLeft >= max;
+    };
+    const scrollTips = (dir) => {
+      tipsTrack.scrollBy({ left: step() * dir, behavior: reduceMotion ? 'auto' : 'smooth' });
+    };
+    if (prev && next) {
+      prev.addEventListener('click', () => scrollTips(-1));
+      next.addEventListener('click', () => scrollTips(1));
+      tipsTrack.addEventListener('scroll', updateButtons, { passive: true });
+      window.addEventListener('resize', updateButtons);
+      updateButtons();
+      requestAnimationFrame(updateButtons);
+    }
   }
 
   /* ---------- Reference lightbox ---------- */
