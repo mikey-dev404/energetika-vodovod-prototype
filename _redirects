@@ -1,0 +1,35 @@
+# Legacy WordPress URLs -> new static structure (301)
+/vzdrzevanje/        /storitve/vzdrzevanje.html        301
+/vzdrzevanje         /storitve/vzdrzevanje.html        301
+/svetovanje/         /storitve/svetovanje.html         301
+/svetovanje          /storitve/svetovanje.html         301
+/elektroinstalacije/ /storitve/elektroinstalacije.html  301
+/elektroinstalacije  /storitve/elektroinstalacije.html  301
+/vodovod/            /storitve/vodovod.html             301
+/vodovod             /storitve/vodovod.html             301
+/prezracevanje/      /storitve/prezracevanje.html       301
+/prezracevanje       /storitve/prezracevanje.html       301
+/klimatizacija/      /storitve/klimatizacija.html       301
+/klimatizacija       /storitve/klimatizacija.html       301
+/toplotne-crpalke/   /storitve/toplotne-crpalke.html    301
+/toplotne-crpalke    /storitve/toplotne-crpalke.html    301
+/pametni-domovi/     /storitve/pametni-domovi.html      301
+/pametni-domovi      /storitve/pametni-domovi.html      301
+/storitve            /storitve/                         301
+
+# Existing clean WordPress service URLs -> new .html files (301)
+/storitve/elektroinstalacije/  /storitve/elektroinstalacije.html  301
+/storitve/vodovod/             /storitve/vodovod.html             301
+/storitve/prezracevanje/       /storitve/prezracevanje.html       301
+/storitve/klimatizacija/       /storitve/klimatizacija.html       301
+/storitve/toplotne-crpalke/    /storitve/toplotne-crpalke.html    301
+/storitve/pametni-domovi/      /storitve/pametni-domovi.html      301
+/storitve/vzdrzevanje/         /storitve/vzdrzevanje.html         301
+/storitve/svetovanje/          /storitve/svetovanje.html          301
+
+# Existing clean root URLs -> .html files (301)
+/o-nas/                  /o-nas.html                  301
+/reference/              /reference.html              301
+/dezurna-sluzba/         /dezurna-sluzba.html         301
+/kontakt/                /kontakt.html                301
+/varstvo-osebnih-podatkov/ /zasebnost.html            301

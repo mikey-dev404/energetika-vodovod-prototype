@@ -1,0 +1,39 @@
+# Energetika Vodovod — legacy 301s for the static .html structure.
+# Apache/LiteSpeed only. GitHub Pages ignores this file.
+# Back up the existing WordPress .htaccess and merge these rules at cutover;
+# keep the WordPress block until the migration is verified.
+#
+# Clean URLs without .html are a later phase. They require the service pages
+# to live in folders (storitve/<slug>/index.html); see docs/redirects.md.
+
+Options -MultiViews
+DirectoryIndex index.html
+RewriteEngine On
+
+# --- 301: legacy root WordPress service slugs -> /storitve/<slug>.html ---
+RewriteRule ^vzdrzevanje/?$          /storitve/vzdrzevanje.html         [R=301,L]
+RewriteRule ^svetovanje/?$            /storitve/svetovanje.html          [R=301,L]
+RewriteRule ^elektroinstalacije/?$    /storitve/elektroinstalacije.html  [R=301,L]
+RewriteRule ^vodovod/?$               /storitve/vodovod.html             [R=301,L]
+RewriteRule ^prezracevanje/?$         /storitve/prezracevanje.html       [R=301,L]
+RewriteRule ^klimatizacija/?$         /storitve/klimatizacija.html       [R=301,L]
+RewriteRule ^toplotne-crpalke/?$      /storitve/toplotne-crpalke.html    [R=301,L]
+RewriteRule ^pametni-domovi/?$        /storitve/pametni-domovi.html      [R=301,L]
+RewriteRule ^storitve$                /storitve/                         [R=301,L]
+
+# --- 301: existing clean WordPress service URLs -> .html ---
+RewriteRule ^storitve/elektroinstalacije/?$  /storitve/elektroinstalacije.html  [R=301,L]
+RewriteRule ^storitve/vodovod/?$             /storitve/vodovod.html             [R=301,L]
+RewriteRule ^storitve/prezracevanje/?$       /storitve/prezracevanje.html       [R=301,L]
+RewriteRule ^storitve/klimatizacija/?$       /storitve/klimatizacija.html       [R=301,L]
+RewriteRule ^storitve/toplotne-crpalke/?$    /storitve/toplotne-crpalke.html    [R=301,L]
+RewriteRule ^storitve/pametni-domovi/?$      /storitve/pametni-domovi.html      [R=301,L]
+RewriteRule ^storitve/vzdrzevanje/?$         /storitve/vzdrzevanje.html         [R=301,L]
+RewriteRule ^storitve/svetovanje/?$          /storitve/svetovanje.html          [R=301,L]
+
+# --- 301: existing clean root URLs -> .html ---
+RewriteRule ^o-nas/?$                   /o-nas.html                   [R=301,L]
+RewriteRule ^reference/?$               /reference.html               [R=301,L]
+RewriteRule ^dezurna-sluzba/?$          /dezurna-sluzba.html          [R=301,L]
+RewriteRule ^kontakt/?$                 /kontakt.html                 [R=301,L]
+RewriteRule ^varstvo-osebnih-podatkov/?$ /zasebnost.html              [R=301,L]

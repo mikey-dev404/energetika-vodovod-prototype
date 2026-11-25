@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://energetikavodovod.si/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://energetikavodovod.si/storitve/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://energetikavodovod.si/storitve/elektroinstalacije/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://energetikavodovod.si/storitve/vodovod/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://energetikavodovod.si/storitve/prezracevanje/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://energetikavodovod.si/storitve/klimatizacija/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://energetikavodovod.si/storitve/toplotne-crpalke/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://energetikavodovod.si/storitve/pametni-domovi/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://energetikavodovod.si/o-nas/</loc><lastmod>2026-11-24</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://energetikavodovod.si/reference/</loc><lastmod>2026-11-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://energetikavodovod.si/dezurna-sluzba/</loc><lastmod>2026-11-24</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://energetikavodovod.si/kontakt/</loc><lastmod>2026-11-24</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://energetikavodovod.si/varstvo-osebnih-podatkov/</loc><lastmod>2026-11-24</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://energetikavodovod.si/</loc><lastmod>2026-11-25</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://energetikavodovod.si/storitve/</loc><lastmod>2026-11-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://energetikavodovod.si/storitve/elektroinstalacije.html</loc><lastmod>2026-11-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://energetikavodovod.si/storitve/vodovod.html</loc><lastmod>2026-11-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://energetikavodovod.si/storitve/prezracevanje.html</loc><lastmod>2026-11-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://energetikavodovod.si/storitve/klimatizacija.html</loc><lastmod>2026-11-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://energetikavodovod.si/storitve/toplotne-crpalke.html</loc><lastmod>2026-11-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://energetikavodovod.si/storitve/pametni-domovi.html</loc><lastmod>2026-11-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://energetikavodovod.si/storitve/vzdrzevanje.html</loc><lastmod>2026-11-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://energetikavodovod.si/storitve/svetovanje.html</loc><lastmod>2026-11-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://energetikavodovod.si/o-nas.html</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://energetikavodovod.si/reference.html</loc><lastmod>2026-11-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://energetikavodovod.si/dezurna-sluzba.html</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://energetikavodovod.si/kontakt.html</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://energetikavodovod.si/zasebnost.html</loc><lastmod>2026-11-25</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
