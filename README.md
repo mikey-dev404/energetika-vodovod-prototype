@@ -4,8 +4,10 @@ A modern, responsive, multi-page website for **Energetika Vodovod d.o.o.** — *
 
 Dependency-free static HTML, CSS and vanilla JS with eight dedicated service pages, clear navigation, readable long-form content, two inquiry forms with an e-mail fallback, and a consent-gated analytics setup.
 
-**Live preview:** <https://mikey-dev404.github.io/energetika-vodovod-prototype/>  
+**Live preview (current):** <https://mikey-dev404.github.io/energetika-vodovod-prototype/>  
 **Repository:** <https://github.com/mikey-dev404/energetika-vodovod-prototype>
+
+> **Private-repo migration:** Netlify config is prepared in `netlify.toml`; once the Netlify site is live, the GitHub repo can be switched to private and GitHub Pages disabled. Setup and verification: [`docs/netlify-private-preview.md`](docs/netlify-private-preview.md).
 
 ![Home page](docs/preview-desktop.jpg)
 
