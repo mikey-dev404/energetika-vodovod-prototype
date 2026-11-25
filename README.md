@@ -65,7 +65,7 @@ Every page shares the same emergency bar, header, footer and mobile action bar. 
 - **Six service pages** — scope list, process steps, three FAQs in native `<details>` blocks, related services and a contact panel.
 - **Photographic references** — images from the company’s own website, used with neutral service captions. No invented locations, years or project metrics.
 - **Contact page** — phone/e-mail/address/hours tiles, emergency strip and the full three-step form with live summary and confirmation.
-- **Working forms** — both forms submit to a form service (FormSubmit) configured in `assets/js/form-config.js`; success and error states are driven by the actual response. No fake reference IDs and no prototype disclaimers.
+- **Form handling** — both forms attempt to POST to the endpoint in `assets/js/form-config.js`; success is shown only on a real success response. **Verified 25 Nov 2026:** the FormSubmit AJAX endpoint is blocked by CORS from the GitHub Pages origin, so the forms currently fall back to a prefilled e-mail link instead of pretending to send. A CORS-enabled/server endpoint is required for automatic delivery.
 - **Legal identifiers** — Matična številka `8167117000`, Davčna številka / ID za DDV `SI41527933`, Registrski organ Okrožno sodišče v Ljubljani, in the footer and privacy page.
 - **SEO** — production canonical URLs, absolute Open Graph image, Twitter card, favicon set, web manifest, `LocalBusiness` JSON-LD with opening hours, `sitemap.xml` and `robots.txt`.
 - **Readable typography** — 17 px body, 1.7 line-height, prose limited to ~68 characters.
@@ -113,7 +113,7 @@ Each HTML file is standalone and includes its own copy of the shared header and 
 
 ## Forms
 
-Both forms post JSON to the endpoint in `assets/js/form-config.js`:
+Both forms attempt to POST JSON to the endpoint in `assets/js/form-config.js`:
 
 ```js
 window.EV_FORM_CONFIG = {
@@ -122,11 +122,13 @@ window.EV_FORM_CONFIG = {
 };
 ```
 
-**Activation:** FormSubmit requires the recipient (`info@energetikavodovod.si`) to confirm the first submission by clicking the activation link in the email it receives. Until then, submissions may fail. After activation, form submissions are delivered by e-mail.
+**Live verification (25 Nov 2026):** See [`docs/form-verification.md`](docs/form-verification.md). A real submission from the deployed GitHub Pages site to `https://formsubmit.co/ajax/info@energetikavodovod.si` failed in the browser with a CORS error (no `Access-Control-Allow-Origin`). The form did **not** show a false success; it displayed the error state and a prefilled `mailto:` fallback. A standard FormSubmit POST was also tested and hit a Cloudflare challenge. **FormSubmit AJAX is therefore not a usable production handler from this origin.**
 
-To use a different provider, change `endpoint` to your API or Formspree/Netlify endpoint. The payload contains `_subject`, `_template`, `name`, `phone`, `email`, `service`, `property`, `location`, `urgency`, `message`, `consent` and `_replyto`. The front-end checks the JSON response and only shows success when the request actually succeeds; on failure it keeps the form and shows a phone fallback.
+**To make automatic delivery work**, point `endpoint` at a CORS-enabled endpoint you control — e.g. a same-origin `send.php`/PHP handler on the production hosting, a Formspree form ID, or Netlify Forms. The UI is already wired for a JSON/2xx success response and an error + e-mail fallback. The payload contains `_subject`, `_template`, `name`, `phone`, `email`, `service`, `property`, `location`, `urgency`, `message`, `consent` and `_replyto`.
 
-**Privacy:** FormSubmit is a third-party processor. This is disclosed in `zasebnost.html`. Review their terms and your DPA/GDPR position before launch. The consent checkbox blocks submission in both forms.
+**Activation:** if you do use FormSubmit, the recipient (`info@energetikavodovod.si`) must confirm the first submission via the activation e-mail. That does not remove the CORS blocker observed from GitHub Pages.
+
+**Privacy:** FormSubmit is a third-party processor; the fallback uses the visitor's e-mail client. This is disclosed in `zasebnost.html`. Review the DPA/GDPR position before launch. The consent checkbox blocks submission in both forms.
 
 ---
 
@@ -136,13 +138,13 @@ To use a different provider, change `endpoint` to your API or Formspree/Netlify 
 
 **Services** — each service has its own file under `storitve/` (scope, steps, FAQs, related services). To add a seventh service, copy a file, update the content, then add it to `storitve/index.html`, the footer and the homepage.
 
-**References** — `reference.html` and the three cards on the home page use photographs from the company’s own site with neutral captions. Replace them with documented project photos and details when available; do not add locations, years or metrics without verification.
+**References** — `reference.html` and the three cards on the home page use photographs from the company’s own site with neutral captions and scope tags (e.g. Meritve, Prenova inštalacije, Rekuperacija). Replace them with documented project photos and details when available; do not add locations, years or metrics without verification.
 
 **Trust signals** — the site currently uses verified numbers (20+ years, 1,000+ projects, 24/7), service breadth and photographic references. Partner/manufacturer logos, certifications and client reviews should be added only with client-supplied, verifiable assets.
 
-**Legal** — company identifiers are in the footer and `zasebnost.html`. Confirm the registration court and legal wording with the client/legal adviser before launch.
+**Legal** — company identifiers are in the footer and `zasebnost.html`. They were checked on 25 Nov 2026 against VIES and an AJPES-sourced CompanyWall record; see [`docs/registry-verification.md`](docs/registry-verification.md). Keep the evidence and have the legal wording reviewed before launch.
 
-**Cache busting** — CSS and JS are linked with `?v=20261125b`. After editing CSS/JS, update that string in every HTML file.
+**Cache busting** — CSS and JS are linked with `?v=20261125c`. After editing CSS/JS, update that string in every HTML file.
 
 ---
 
@@ -157,9 +159,9 @@ To use a different provider, change `endpoint` to your API or Formspree/Netlify 
 
 ### Before launch
 
-- [ ] Activate FormSubmit for `info@energetikavodovod.si` (or swap the endpoint).
+- [ ] Deploy a CORS-enabled endpoint (same-origin `send.php` or a Formspree/Netlify form ID) and retest both forms. FormSubmit AJAX is currently CORS-blocked from GitHub Pages.
 - [ ] Confirm emergency coverage (`Ljubljana z okolico` is currently stated) and toll-free status with the client.
-- [ ] Confirm the registration court and all legal identifiers.
+- [x] Registry data checked 25 Nov 2026: MŠ `8167117000` and DŠ `SI41527933` via VIES and the AJPES-sourced CompanyWall record; Reg. organ `Okrožno sodišče v Ljubljani` via the same AJPES-sourced record. Retain the evidence with the launch file.
 - [ ] Replace the service-photo gallery with documented project references and add partner logos/certifications/reviews.
 - [ ] Have the privacy policy and consent wording reviewed for GDPR/ZEKom-2.
 - [ ] If analytics/maps are added, implement a cookie consent banner before loading them.

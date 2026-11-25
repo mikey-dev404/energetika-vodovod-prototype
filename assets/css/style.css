@@ -1366,6 +1366,26 @@ fieldset { margin: 0; padding: 0; border: 0; }
   line-height: 1.6;
   color: var(--muted);
 }
+.ref-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line-soft);
+  list-style: none;
+}
+.ref-card__tags li {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 99px;
+  background: var(--surface);
+  font-size: .6875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--muted);
+}
 .ref-card__meta {
   display: flex;
   flex-wrap: wrap;
@@ -2682,6 +2702,7 @@ body { font-size: 1.0625rem; line-height: 1.7; }
   color: #8f1a13;
 }
 .form-status[hidden] { display: none !important; }
+.form-status a { color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 
 .ref-card__media img {
   width: 100%;

@@ -261,9 +261,34 @@
 
   const status = document.getElementById('home-lead-status');
 
-  function showStatus(message) {
+  function mailtoFor(data) {
+    const config = window.EV_FORM_CONFIG || {};
+    const email = config.fallbackEmail || 'info@energetikavodovod.si';
+    const subject = 'Povpraševanje – ' + data.service;
+    const lines = [
+      'Ime in priimek: ' + data.name,
+      'Telefon: ' + (data.phone || '—'),
+      'E-pošta: ' + (data.email || '—'),
+      'Storitev: ' + data.service,
+      'Vrsta objekta: ' + data.property,
+      'Lokacija: ' + data.location,
+      'Kdaj: ' + data.urgency,
+      'Opis: ' + (data.message || '—'),
+      '',
+      'Soglasje za obdelavo osebnih podatkov: da'
+    ];
+    return 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+  }
+
+  function showStatus(message, data) {
     if (!status) return;
     status.textContent = message;
+    if (data) {
+      const link = document.createElement('a');
+      link.href = mailtoFor(data);
+      link.textContent = 'pošljite povpraševanje po e-pošti';
+      status.append(link, '.');
+    }
     status.hidden = false;
     status.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
   }
@@ -366,7 +391,7 @@
       window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
       window.setTimeout(() => $('.lead-success__title', success)?.focus({ preventScroll: true }), 260);
     } catch (error) {
-      showStatus('Povpraševanja ni bilo mogoče poslati. Poskusite znova ali pokličite 080 22 50.');
+      showStatus('Neposredno pošiljanje ni uspelo. Poskusite znova, pokličite 080 22 50 ali ', data);
     } finally {
       submitting = false;
       button.disabled = false;
