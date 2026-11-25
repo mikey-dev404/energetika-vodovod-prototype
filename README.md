@@ -13,7 +13,11 @@ Dependency-free static HTML, CSS and vanilla JS with eight dedicated service pag
 
 | Homepage inquiry | References |
 | --- | --- |
-| ![Homepage inquiry](docs/preview-home-inquiry.jpg) | ![References](docs/preview-references.jpg) |
+| ![Homepage inquiry](docs/preview-home-inquiry.jpg) | ![Filterable references](docs/preview-references.jpg) |
+
+| Process section | Reference lightbox |
+| --- | --- |
+| ![Process section](docs/preview-home-process.jpg) | ![Reference lightbox](docs/preview-lightbox.jpg) |
 
 ---
 
@@ -65,15 +69,16 @@ Every page shares the same emergency bar, header, footer and mobile action bar. 
 
 - **Emergency line** — `080 22 50` (brezplačna številka) separated from navigation in the utility bar, with a fixed mobile action bar. Emergency scope and coverage are stated on the emergency page and home band.
 - **Clear navigation** — five top-level items plus one inquiry CTA. The mobile menu has a backdrop, and only one header CTA exists in the DOM.
-- **Home page** — hero (all eight services, including industrial objects), service cards, trust band, a two-step guided inquiry, three reference photographs and a closing emergency/contact band.
+- **Home page** — hero (all eight services, including industrial objects), service cards, trust band, an animated three-step process section, a two-step guided inquiry, three openable reference photographs and a closing emergency/contact band.
 - **Eight service pages** — scope list, process steps, three FAQs in native `<details>` blocks, related services and a contact panel. The two restored live-site scopes are Vzdrževanje and Svetovanje.
-- **Photographic references** — images from the company’s own website, used with neutral service captions. No invented locations, years or project metrics.
+- **Photographic references** — six photographs from the company’s own website, with neutral captions, scope tags, category filters and an accessible lightbox. No invented locations, years or project metrics.
 - **Contact page** — phone/e-mail/address/hours tiles, emergency strip and the full three-step form with live summary and confirmation.
 - **Form handling** — both forms attempt to POST to the endpoint in `assets/js/form-config.js`; success is shown only on a real success response. **Verified 25 Nov 2026:** the FormSubmit AJAX endpoint is blocked by CORS from the GitHub Pages origin, so the forms currently fall back to a prefilled e-mail link instead of pretending to send. A CORS-enabled/server endpoint is required for automatic delivery.
 - **Cookie consent** — first-visit banner with **Sprejmi vse**, **Zavrni vse** and **Nastavitve**, linked to `zasebnost.html#piskotki`. Google Tag Manager (`GTM-THRLMGMB`) is not requested until analytics consent is granted; Consent Mode v2 defaults to denied. See [`docs/cookie-consent.md`](docs/cookie-consent.md).
 - **Migration / 301s** — legacy WordPress URLs (including `/vzdrzevanje/` and `/svetovanje/`) and existing clean URLs 301 to the new `.html` files. Clean URLs without `.html` require a folder-based restructure; the safe phase-2 plan is in [`docs/redirects.md`](docs/redirects.md).
 - **Legal identifiers** — Matična številka `8167117000`, Davčna številka / ID za DDV `SI41527933`, Registrski organ Okrožno sodišče v Ljubljani, in the footer and privacy page.
 - **SEO** — production canonical URLs, absolute Open Graph image, Twitter card, favicon set, web manifest, `LocalBusiness` JSON-LD with opening hours, `sitemap.xml` and `robots.txt`.
+- **Living details** — animated counters, a scroll progress bar, back-to-top control, subtle hero parallax, filterable references and a keyboard-accessible lightbox. All motion respects `prefers-reduced-motion`.
 - **Readable typography** — 17 px body, 1.7 line-height, prose limited to ~68 characters.
 - **Accessibility** — 0 axe violations on all 15 pages; semantic landmarks, one `h1`, visible breadcrumbs, labelled fields, `aria-invalid`/`role="alert"` errors, focus management, reduced-motion and print styles.
 
@@ -104,6 +109,7 @@ energetika-vodovod-prototype/
 │   ├── js/
 │   │   ├── form-config.js     # form endpoint configuration
 │   │   ├── consent.js         # cookie banner + GTM gate
+│   │   ├── enhancements.js    # counters, filters, lightbox, scroll UI
 │   │   ├── main.js            # navigation, contact wizard, shared UI
 │   │   └── home-lead.js       # compact homepage inquiry
 │   ├── fonts/                 # Poppins + Inter woff2
@@ -163,7 +169,7 @@ Configuration and testing: [`docs/cookie-consent.md`](docs/cookie-consent.md).
 
 **Legal** — company identifiers are in the footer and `zasebnost.html`. They were checked on 25 Nov 2026 against VIES and an AJPES-sourced CompanyWall record; see [`docs/registry-verification.md`](docs/registry-verification.md). Keep the evidence and have the legal wording reviewed before launch.
 
-**Cache busting** — CSS and JS are linked with `?v=20261125d`. After editing CSS/JS, update that string in every HTML file.
+**Cache busting** — CSS and JS are linked with `?v=20261125e`. After editing CSS/JS, update that string in every HTML file.
 
 ---
 

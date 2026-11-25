@@ -28,7 +28,7 @@
 <link rel="preload" href="assets/fonts/poppins-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
-<link rel="stylesheet" href="assets/css/style.css?v=20261125d">
+<link rel="stylesheet" href="assets/css/style.css?v=20261125e">
 
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
@@ -256,10 +256,23 @@
 <section class="section">
   <div class="container">
     <h2 class="sr-only">Izbrane izvedbe</h2>
-    <div class="ref-grid">
-      <article class="ref-card reveal">
+    <div class="ref-toolbar">
+      <div class="ref-filters" role="group" aria-label="Filtriraj reference">
+        <button class="ref-filter is-active" type="button" data-filter="all" aria-pressed="true" aria-controls="ref-grid">Vse</button>
+        <button class="ref-filter" type="button" data-filter="elektro" aria-pressed="false" aria-controls="ref-grid">Elektroinštalacije</button>
+        <button class="ref-filter" type="button" data-filter="vodovod" aria-pressed="false" aria-controls="ref-grid">Vodovod</button>
+        <button class="ref-filter" type="button" data-filter="prezracevanje" aria-pressed="false" aria-controls="ref-grid">Prezračevanje</button>
+        <button class="ref-filter" type="button" data-filter="klimatizacija" aria-pressed="false" aria-controls="ref-grid">Klimatizacija</button>
+      </div>
+      <p class="ref-count" data-ref-count aria-live="polite">6 projektov</p>
+    </div>
+    <div class="ref-grid" id="ref-grid">
+      <article class="ref-card" data-category="elektro">
   <div class="ref-card__media">
+  <a class="ref-card__open" href="assets/img/galerija-elektro.jpg" data-lightbox aria-haspopup="dialog" data-src="assets/img/galerija-elektro.jpg" data-title="Meritve in prenova električne inštalacije" data-alt="Meritve električne inštalacije z merilnikom" aria-label="Odpri fotografijo: Meritve in prenova električne inštalacije">
     <img src="assets/img/galerija-elektro.jpg" alt="Meritve električne inštalacije z merilnikom" width="800" height="520" loading="lazy">
+    <span class="ref-card__zoom" aria-hidden="true">Povečaj</span>
+  </a>
   </div>
   <div class="ref-card__body">
     <p class="ref-card__cat">Elektroinštalacije</p>
@@ -271,9 +284,12 @@
   </ul>
   </div>
 </article>
-<article class="ref-card reveal">
+<article class="ref-card" data-category="vodovod">
   <div class="ref-card__media">
+  <a class="ref-card__open" href="assets/img/galerija-vodovod.jpg" data-lightbox aria-haspopup="dialog" data-src="assets/img/galerija-vodovod.jpg" data-title="Zamenjava vodovodne napeljave" data-alt="Zamenjava vodovodne napeljave" aria-label="Odpri fotografijo: Zamenjava vodovodne napeljave">
     <img src="assets/img/galerija-vodovod.jpg" alt="Zamenjava vodovodne napeljave" width="800" height="520" loading="lazy">
+    <span class="ref-card__zoom" aria-hidden="true">Povečaj</span>
+  </a>
   </div>
   <div class="ref-card__body">
     <p class="ref-card__cat">Vodovod</p>
@@ -285,9 +301,12 @@
   </ul>
   </div>
 </article>
-<article class="ref-card reveal">
+<article class="ref-card" data-category="prezracevanje">
   <div class="ref-card__media">
+  <a class="ref-card__open" href="assets/img/galerija-prezracevanje.jpg" data-lightbox aria-haspopup="dialog" data-src="assets/img/galerija-prezracevanje.jpg" data-title="Razvod prezračevanja z rekuperacijo" data-alt="Razvod prezračevanja iz pocinkanih kanalov" aria-label="Odpri fotografijo: Razvod prezračevanja z rekuperacijo">
     <img src="assets/img/galerija-prezracevanje.jpg" alt="Razvod prezračevanja iz pocinkanih kanalov" width="800" height="520" loading="lazy">
+    <span class="ref-card__zoom" aria-hidden="true">Povečaj</span>
+  </a>
   </div>
   <div class="ref-card__body">
     <p class="ref-card__cat">Prezračevanje</p>
@@ -299,9 +318,12 @@
   </ul>
   </div>
 </article>
-<article class="ref-card reveal">
+<article class="ref-card" data-category="klimatizacija">
   <div class="ref-card__media">
+  <a class="ref-card__open" href="assets/img/galerija-klimatizacija.jpg" data-lightbox aria-haspopup="dialog" data-src="assets/img/galerija-klimatizacija.jpg" data-title="Vgradnja klimatske naprave" data-alt="Notranja enota klimatske naprave na steni" aria-label="Odpri fotografijo: Vgradnja klimatske naprave">
     <img src="assets/img/galerija-klimatizacija.jpg" alt="Notranja enota klimatske naprave na steni" width="800" height="520" loading="lazy">
+    <span class="ref-card__zoom" aria-hidden="true">Povečaj</span>
+  </a>
   </div>
   <div class="ref-card__body">
     <p class="ref-card__cat">Klimatizacija</p>
@@ -313,9 +335,12 @@
   </ul>
   </div>
 </article>
-<article class="ref-card reveal">
+<article class="ref-card" data-category="elektro">
   <div class="ref-card__media">
+  <a class="ref-card__open" href="assets/img/galerija-omara.jpg" data-lightbox aria-haspopup="dialog" data-src="assets/img/galerija-omara.jpg" data-title="Ureditev električne omarice" data-alt="Električna omarica med pregledom in meritvami" aria-label="Odpri fotografijo: Ureditev električne omarice">
     <img src="assets/img/galerija-omara.jpg" alt="Električna omarica med pregledom in meritvami" width="800" height="520" loading="lazy">
+    <span class="ref-card__zoom" aria-hidden="true">Povečaj</span>
+  </a>
   </div>
   <div class="ref-card__body">
     <p class="ref-card__cat">Elektroinštalacije</p>
@@ -327,9 +352,12 @@
   </ul>
   </div>
 </article>
-<article class="ref-card reveal">
+<article class="ref-card" data-category="vodovod">
   <div class="ref-card__media">
+  <a class="ref-card__open" href="assets/img/galerija-vodovod-2.jpg" data-lightbox aria-haspopup="dialog" data-src="assets/img/galerija-vodovod-2.jpg" data-title="Prenova vodovodnih priključkov" data-alt="Vodovodne cevi, ventili in merilniki" aria-label="Odpri fotografijo: Prenova vodovodnih priključkov">
     <img src="assets/img/galerija-vodovod-2.jpg" alt="Vodovodne cevi, ventili in merilniki" width="800" height="520" loading="lazy">
+    <span class="ref-card__zoom" aria-hidden="true">Povečaj</span>
+  </a>
   </div>
   <div class="ref-card__body">
     <p class="ref-card__cat">Vodovod</p>
@@ -426,7 +454,8 @@
     <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg>
   </a>
 </nav>
-<script src="assets/js/consent.js?v=20261125d" defer></script>
-<script src="assets/js/main.js?v=20261125d" defer></script>
+<script src="assets/js/consent.js?v=20261125e" defer></script>
+<script src="assets/js/main.js?v=20261125e" defer></script>
+<script src="assets/js/enhancements.js?v=20261125e" defer></script>
 </body>
 </html>

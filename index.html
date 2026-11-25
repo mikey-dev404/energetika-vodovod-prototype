@@ -28,7 +28,7 @@
 <link rel="preload" href="assets/fonts/poppins-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
-<link rel="stylesheet" href="assets/css/style.css?v=20261125d">
+<link rel="stylesheet" href="assets/css/style.css?v=20261125e">
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
 {
@@ -256,11 +256,11 @@
       <dl class="hero__stats">
         <div class="hero__stat">
           <dt>Let izkušenj</dt>
-          <dd>20<span>+</span></dd>
+          <dd><span data-count="20">20</span><span>+</span></dd>
         </div>
         <div class="hero__stat">
           <dt>Zaključenih projektov</dt>
-          <dd>1.000<span>+</span></dd>
+          <dd><span data-count="1000">1.000</span><span>+</span></dd>
         </div>
         <div class="hero__stat">
           <dt>Dežurna služba</dt>
@@ -379,6 +379,38 @@
 </section>
 
   <!-- ============ HITRO POVPRAŠEVANJE ============ -->
+  <section class="section section--tight home-process" id="potek">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__head-main">
+          <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Potek dela</p>
+          <h2 class="section__title">Od prvega klica<br> do predaje.</h2>
+        </div>
+        <div class="section__head-aside">
+          <p>Jasen potek brez presenečenj. Vnaprej veste, kdo pride, kaj bo naredil in kdaj bo končano.</p>
+          <a class="link-arrow" href="storitve/">Vse storitve <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <ol class="steps home-process__steps">
+        <li class="reveal">
+          <span class="steps__num">01</span>
+          <h3>Pogovor in ogled</h3>
+          <p>Prisluhnemo potrebam, pregledamo objekt in preverimo, kaj je izvedljivo.</p>
+        </li>
+        <li class="reveal">
+          <span class="steps__num">02</span>
+          <h3>Ponudba in terminski plan</h3>
+          <p>Pripravimo jasno ponudbo z obsegom del in predvidenim potekom.</p>
+        </li>
+        <li class="reveal">
+          <span class="steps__num">03</span>
+          <h3>Izvedba in predaja</h3>
+          <p>Delo izvedemo po dogovoru, preverimo delovanje in predamo objekt.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
   <section class="section section--tight home-inquiry" id="hitro-povprasevanje">
     <div class="container home-inquiry__inner">
       <div class="home-inquiry__intro">
@@ -669,9 +701,12 @@
       </div>
     </div>
     <div class="ref-grid ref-grid--3">
-      <article class="ref-card reveal">
+      <article class="ref-card" data-category="elektro">
   <div class="ref-card__media">
+  <a class="ref-card__open" href="assets/img/galerija-elektro.jpg" data-lightbox aria-haspopup="dialog" data-src="assets/img/galerija-elektro.jpg" data-title="Meritve in prenova električne inštalacije" data-alt="Meritve električne inštalacije z merilnikom" aria-label="Odpri fotografijo: Meritve in prenova električne inštalacije">
     <img src="assets/img/galerija-elektro.jpg" alt="Meritve električne inštalacije z merilnikom" width="800" height="520" loading="lazy">
+    <span class="ref-card__zoom" aria-hidden="true">Povečaj</span>
+  </a>
   </div>
   <div class="ref-card__body">
     <p class="ref-card__cat">Elektroinštalacije</p>
@@ -683,9 +718,12 @@
   </ul>
   </div>
 </article>
-<article class="ref-card reveal">
+<article class="ref-card" data-category="prezracevanje">
   <div class="ref-card__media">
+  <a class="ref-card__open" href="assets/img/galerija-prezracevanje.jpg" data-lightbox aria-haspopup="dialog" data-src="assets/img/galerija-prezracevanje.jpg" data-title="Razvod prezračevanja z rekuperacijo" data-alt="Razvod prezračevanja iz pocinkanih kanalov" aria-label="Odpri fotografijo: Razvod prezračevanja z rekuperacijo">
     <img src="assets/img/galerija-prezracevanje.jpg" alt="Razvod prezračevanja iz pocinkanih kanalov" width="800" height="520" loading="lazy">
+    <span class="ref-card__zoom" aria-hidden="true">Povečaj</span>
+  </a>
   </div>
   <div class="ref-card__body">
     <p class="ref-card__cat">Prezračevanje</p>
@@ -697,9 +735,12 @@
   </ul>
   </div>
 </article>
-<article class="ref-card reveal">
+<article class="ref-card" data-category="klimatizacija">
   <div class="ref-card__media">
+  <a class="ref-card__open" href="assets/img/galerija-klimatizacija.jpg" data-lightbox aria-haspopup="dialog" data-src="assets/img/galerija-klimatizacija.jpg" data-title="Vgradnja klimatske naprave" data-alt="Notranja enota klimatske naprave na steni" aria-label="Odpri fotografijo: Vgradnja klimatske naprave">
     <img src="assets/img/galerija-klimatizacija.jpg" alt="Notranja enota klimatske naprave na steni" width="800" height="520" loading="lazy">
+    <span class="ref-card__zoom" aria-hidden="true">Povečaj</span>
+  </a>
   </div>
   <div class="ref-card__body">
     <p class="ref-card__cat">Klimatizacija</p>
@@ -798,9 +839,10 @@
     <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg>
   </a>
 </nav>
-<script src="assets/js/form-config.js?v=20261125d" defer></script>
-<script src="assets/js/consent.js?v=20261125d" defer></script>
-<script src="assets/js/main.js?v=20261125d" defer></script>
-<script src="assets/js/home-lead.js?v=20261125d" defer></script>
+<script src="assets/js/form-config.js?v=20261125e" defer></script>
+<script src="assets/js/consent.js?v=20261125e" defer></script>
+<script src="assets/js/main.js?v=20261125e" defer></script>
+<script src="assets/js/enhancements.js?v=20261125e" defer></script>
+<script src="assets/js/home-lead.js?v=20261125e" defer></script>
 </body>
 </html>
