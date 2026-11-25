@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<title>Energetika Vodovod — predstavitev spletne strani</title>
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<style>
+  :root{
+    --paper:#fbf7f0; --ink:#0e2b2a; --ink-2:#153c3a; --red:#e60f0e; --red-600:#c90d0c;
+    --muted:#596a65; --muted-2:#5a6a65; --line:#ddd4c7; --line-soft:#eae2d6;
+    --surface:#f5f0e8; --surface-2:#ece4d8; --brass:#b08a58; --white:#fff;
+    --fh:"Fraunces",Georgia,serif; --fb:"Inter",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#ddd4c7}
+  body{font-family:var(--fb);color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:24px;padding:24px}
+  .slide{width:1280px;height:720px;position:relative;overflow:hidden;background:var(--paper);break-after:page;page-break-after:always;display:flex;flex-direction:column}
+  .slide:last-child{break-after:auto;page-break-after:auto}
+  .slide--dark{background:var(--ink);color:#fff}
+  .slide--surface{background:var(--surface)}
+  .pad{position:relative;z-index:2;padding:46px 62px 58px;display:flex;flex-direction:column;min-height:0;flex:1}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:20px;flex:none}
+  .logo{height:26px;width:auto;display:block}
+  .kicker{display:flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red-600)}
+  .kicker:before{content:"";display:block;width:24px;height:1px;background:var(--red)}
+  .slide--dark .kicker{color:#ff8a86}
+  h1,h2,h3{font-family:var(--fh);font-weight:500;letter-spacing:-.035em}
+  h1{font-size:76px;line-height:.94}
+  h2{font-size:48px;line-height:1.02;margin-top:12px}
+  .lead{font-size:15px;line-height:1.65;color:var(--muted);max-width:63ch}
+  .slide--dark .lead{color:rgba(255,255,255,.72)}
+  .foot{position:absolute;left:62px;right:62px;bottom:22px;z-index:3;display:flex;justify-content:space-between;gap:20px;padding-top:10px;border-top:1px solid var(--line);font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2)}
+  .slide--dark .foot{border-top-color:rgba(255,255,255,.16);color:rgba(255,255,255,.5)}
+  .foot b{color:var(--red-600)} .slide--dark .foot b{color:#ff8a86}
+  .browser{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 28px 55px -32px rgba(14,43,42,.5)}
+  .browser__bar{height:27px;display:flex;align-items:center;gap:5px;padding:0 10px;background:#f0eae0;border-bottom:1px solid var(--line)}
+  .browser__dot{width:6px;height:6px;border-radius:50%;background:#c9bfb0}
+  .browser__url{margin-left:8px;font-size:7.5px;letter-spacing:.03em;color:var(--muted-2)}
+  .browser img{display:block;width:100%;height:auto}
+  .shot{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 24px 45px -30px rgba(14,43,42,.45)}
+  .shot img{display:block;width:100%;height:auto}
+  .slide--dark .shot{border-color:rgba(255,255,255,.18);box-shadow:0 30px 50px -30px rgba(0,0,0,.5)}
+  .num{font-family:var(--fh);font-size:24px;color:var(--red);line-height:1}
+  .eyebrow-sm{font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted-2)}
+  .grid-2{display:grid;grid-template-columns:1.02fr .98fr;gap:42px;align-items:center}
+  .grid-2--media{grid-template-columns:1.18fr .82fr}
+  .grid-2--copy{grid-template-columns:.84fr 1.16fr}
+  .stack{display:flex;flex-direction:column;gap:16px}
+  .rule{height:1px;background:var(--line);margin:20px 0}
+  .slide--dark .rule{background:rgba(255,255,255,.16)}
+
+  /* cover */
+  .cover{display:grid;grid-template-columns:1.12fr .88fr;background:var(--paper)}
+  .cover__copy{padding:52px 54px 46px 64px;display:flex;flex-direction:column;position:relative}
+  .cover__copy:before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 25% 20%,#000,transparent 70%);opacity:.6}
+  .cover__copy>*{position:relative;z-index:1}
+  .cover__kicker{margin-top:auto;padding-top:30px}
+  .cover h1{font-size:82px;margin-top:16px;max-width:640px}
+  .cover h1 em{font-style:normal;color:var(--red)}
+  .cover__lead{font-size:16px;line-height:1.65;color:var(--muted);margin-top:20px;max-width:470px}
+  .cover__meta{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:26px;padding-top:15px;border-top:1px solid var(--line);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+  .cover__media{position:relative;background:var(--ink);overflow:hidden}
+  .cover__media img{width:100%;height:100%;object-fit:cover;display:block}
+  .cover__media:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,43,42,.3),transparent 35%),linear-gradient(0deg,rgba(14,43,42,.55),transparent 45%)}
+  .cover__badge{position:absolute;left:28px;bottom:30px;z-index:2;display:flex;align-items:center;gap:8px;padding:9px 13px;background:rgba(14,43,42,.86);color:#fff;font-size:10px;font-weight:600;border-radius:4px;backdrop-filter:blur(6px)}
+  .cover__badge i{width:7px;height:7px;border-radius:50%;background:var(--red);display:block}
+
+  /* list */
+  .agenda{display:grid;grid-template-columns:1fr 1fr;gap:0 38px;margin-top:22px}
+  .agenda__item{display:flex;gap:15px;padding:14px 0;border-top:1px solid var(--line)}
+  .agenda__item h3{font-size:18px;line-height:1.2;letter-spacing:-.02em}
+  .agenda__item p{font-size:11px;line-height:1.5;color:var(--muted);margin-top:3px}
+  .agenda__item .num{font-size:18px;width:28px;flex:none;padding-top:2px}
+
+  /* pillars */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+  .pillar{border-top:1px solid rgba(255,255,255,.2);padding-top:14px}
+  .pillar .num{color:#ff8a86;font-size:20px}
+  .pillar h3{font-size:22px;margin-top:12px;color:#fff}
+  .pillar p{font-size:11px;line-height:1.55;color:rgba(255,255,255,.66);margin-top:6px}
+
+  /* visual direction */
+  .direction{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;margin-top:22px;align-items:start}
+  .swatches{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .swatch{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff}
+  .swatch__color{height:66px}
+  .swatch__meta{padding:8px 10px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+  .swatch__meta b{font-size:10px;font-weight:700}
+  .swatch__meta span{font-size:8px;color:var(--muted-2);letter-spacing:.04em}
+  .type-spec{display:flex;gap:18px;margin-top:14px;border-top:1px solid var(--line);padding-top:14px}
+  .type-spec__big{font-family:var(--fh);font-size:40px;line-height:.95;letter-spacing:-.04em;white-space:nowrap}
+  .type-spec__small{font-size:10px;line-height:1.6;color:var(--muted)}
+  .type-spec__small b{display:block;color:var(--ink);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+  .note{font-size:10px;line-height:1.55;color:var(--muted);border-left:2px solid var(--red);padding-left:12px;margin-top:18px;max-width:43ch}
+
+  /* feature slide */
+  .callouts{display:flex;flex-direction:column;gap:0}
+  .callout{padding:14px 0;border-top:1px solid var(--line)}
+  .callout:first-child{border-top:0;padding-top:0}
+  .callout h3{font-size:18px;line-height:1.2}
+  .callout p{font-size:10.5px;line-height:1.55;color:var(--muted);margin-top:3px}
+  .caption{font-size:9px;line-height:1.5;color:var(--muted-2);margin-top:8px;letter-spacing:.01em}
+
+  /* services list */
+  .svc{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin-top:12px}
+  .svc__row{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px solid var(--line)}
+  .svc__row span{font-size:9px;color:var(--red-600);font-weight:700;width:20px;flex:none}
+  .svc__row b{font-size:11.5px;font-weight:600}
+
+  /* mobile */
+  .phone-wrap{display:flex;justify-content:center;align-items:center}
+  .phone{width:248px;padding:8px;background:#081c1b;border-radius:28px;box-shadow:0 28px 50px -26px rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.12)}
+  .phone img{display:block;width:100%;border-radius:21px}
+  .phone__bar{height:13px;display:flex;justify-content:center;align-items:center;margin-bottom:5px}
+  .phone__bar i{display:block;width:44px;height:5px;border-radius:99px;background:rgba(255,255,255,.18)}
+  .mobile-points{display:flex;flex-direction:column;gap:0}
+  .mobile-points .callout{border-top-color:rgba(255,255,255,.16)}
+  .slide--dark .callout p{color:rgba(255,255,255,.66)}
+  .slide--dark .callout h3{color:#fff}
+
+  /* metrics */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+  .metric{background:#fff;border:1px solid var(--line);border-radius:6px;padding:14px 15px}
+  .metric b{display:block;font-family:var(--fh);font-size:37px;line-height:1;color:var(--red);font-weight:500}
+  .metric span{display:block;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-top:7px}
+  .quality{display:grid;grid-template-columns:1fr 1fr;gap:0 30px;margin-top:18px}
+  .quality__item{padding:11px 0;border-top:1px solid var(--line)}
+  .quality__item h3{font-size:14px;line-height:1.2}
+  .quality__item p{font-size:10px;line-height:1.5;color:var(--muted);margin-top:3px}
+  .quality__note{font-size:9px;line-height:1.5;color:var(--muted-2);margin-top:14px;border-left:2px solid var(--brass);padding-left:12px}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:30px}
+  .step{border-top:1px solid rgba(255,255,255,.2);padding-top:12px}
+  .step b{display:block;font-family:var(--fh);font-size:25px;color:#ff8a86;font-weight:500}
+  .step h3{font-size:16px;margin-top:12px;color:#fff;line-height:1.2}
+  .step p{font-size:10px;line-height:1.55;color:rgba(255,255,255,.62);margin-top:5px}
+  .closing{display:grid;grid-template-columns:1.05fr .95fr;background:var(--paper)}
+  .closing__copy{padding:58px 60px 48px 64px;display:flex;flex-direction:column;position:relative}
+  .closing__copy:before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 30% 20%,#000,transparent 72%);opacity:.6}
+  .closing__copy>*{position:relative;z-index:1}
+  .closing h2{font-size:88px;line-height:.9;margin-top:auto}
+  .closing h2 em{font-style:normal;color:var(--red)}
+  .closing p{font-size:13px;line-height:1.65;color:var(--muted);margin-top:18px;max-width:430px}
+  .contact-block{display:flex;gap:34px;margin-top:22px;border-top:1px solid var(--line);padding-top:14px}
+  .contact-block div b{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted-2);margin-bottom:3px}
+  .contact-block div span{font-size:11px;font-weight:600}
+  .closing__media{background:var(--ink);position:relative;overflow:hidden}
+  .closing__media img{width:100%;height:100%;object-fit:cover;display:block;opacity:.95}
+  .closing__media:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,43,42,.7),transparent 50%)}
+  .closing__badge{position:absolute;left:28px;bottom:28px;z-index:2;color:#fff}
+  .closing__badge img{width:120px;height:auto;display:block;margin-bottom:8px}
+  .closing__badge span{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+  .dot-red{width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block;margin-right:7px;vertical-align:1px}
+
+
+  /* Readability pass for screen presentation */
+  .agenda__item p{font-size:12px;line-height:1.5}
+  .callout p{font-size:11.5px;line-height:1.55}
+  .pillar p{font-size:12px;line-height:1.55}
+  .svc__row b{font-size:12.5px}
+  .quality__item h3{font-size:15px}
+  .quality__item p{font-size:11.5px;line-height:1.5}
+  .quality__note{font-size:10.5px}
+  .step p{font-size:11.5px;line-height:1.55}
+  .caption{font-size:10px}
+  .note{font-size:11px}
+  .type-spec__small{font-size:11px}
+  .swatch__meta b{font-size:11px}
+  .metric span{font-size:9.5px}
+  .foot{font-size:9.5px}
+  .slide-fill{margin-top:auto;border-top:1px solid var(--line);padding-top:16px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+  .slide--dark .slide-fill{border-top-color:rgba(255,255,255,.16)}
+  .slide-fill p{font-family:var(--fh);font-size:26px;line-height:1.12;letter-spacing:-.03em;max-width:760px;color:var(--ink)}
+  .slide--dark .slide-fill p{color:#fff}
+  .slide-fill span{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);white-space:nowrap}
+  .slide--dark .slide-fill span{color:rgba(255,255,255,.5)}
+
+  @page{size:1280px 720px;margin:0}
+  @media print{
+    html,body{background:#fff}
+    .deck{padding:0;gap:0;display:block}
+    .slide{margin:0;box-shadow:none}
+  }
+  @media screen{.slide{box-shadow:0 12px 32px -18px rgba(14,43,42,.3)}}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- 01 COVER -->
+<section class="slide cover">
+  <div class="cover__copy">
+    <img class="logo" src="../assets/img/logo.png" alt="Energetika Vodovod">
+    <div class="cover__kicker">
+      <div class="kicker">Predlog spletne strani · 2026</div>
+      <h1>Vse deluje.<br>Tako, kot <em>mora.</em></h1>
+      <p class="cover__lead">Nova spletna stran za Energetika Vodovod d.o.o. — jasnejša, bolj osebna in prilagojena mobilnemu telefonu.</p>
+      <div class="cover__meta"><span>Delovna različica za predstavitev</span><span>Ljubljana</span></div>
+    </div>
+  </div>
+  <div class="cover__media">
+    <img src="../assets/img/hero-living.jpg" alt="Topel stanovanjski prostor, povezan z rešitvami Energetike Vodovod">
+    <div class="cover__badge"><i></i>24/7 dežurna služba</div>
+  </div>
+</section>
+
+<!-- 02 AGENDA -->
+<section class="slide">
+  <div class="pad">
+    <div class="top"><img class="logo" src="../assets/img/logo.png" alt="Energetika Vodovod"><span class="eyebrow-sm">Predstavitev · 01</span></div>
+    <div class="grid-2" style="margin-top:34px;align-items:start">
+      <div>
+        <div class="kicker">Pregled</div>
+        <h2>Kaj boste videli.</h2>
+        <p class="lead" style="margin-top:14px">Predlog, ki poveže vseh osem storitev v eno zgodbo in stranko pripelje od prvega vtisa do pogovora.</p>
+        <div class="agenda">
+          <div class="agenda__item"><span class="num">01</span><div><h3>Zgodba in cilj</h3><p>Kaj mora stran povedati v prvih petih sekundah.</p></div></div>
+          <div class="agenda__item"><span class="num">02</span><div><h3>Vizualna podoba</h3><p>Topla, tehnična in prepoznavna — brez kopiranja obstoječe strani.</p></div></div>
+          <div class="agenda__item"><span class="num">03</span><div><h3>Strani in vsebine</h3><p>Osem storitev, reference, kontakt in mobilna izkušnja.</p></div></div>
+          <div class="agenda__item"><span class="num">04</span><div><h3>Kakovost in koraki</h3><p>Dostopnost, zasebnost, iskalniki in pot do objave.</p></div></div>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="browser"><div class="browser__bar"><i class="browser__dot"></i><i class="browser__dot"></i><i class="browser__dot"></i><span class="browser__url">energetikavodovod.si</span></div><img src="readme-hero.jpg" alt="Predogled domače strani"></div>
+        <p class="caption">Predogled domače strani v predlagani podobi.</p>
+      </div>
+    </div>
+    <div class="slide-fill"><p>Ena zgodba. Osem storitev. Jasna pot do pogovora.</p><span>Pregled</span></div>
+  </div>
+  <div class="foot"><span>Energetika Vodovod · predlog spletne strani</span><span><b>02</b> / 15</span></div>
+</section>
+
+<!-- 03 STRATEGY -->
+<section class="slide slide--dark">
+  <div class="pad">
+    <div class="top"><img class="logo" src="../assets/img/logo-white.png" alt="Energetika Vodovod"><span class="eyebrow-sm" style="color:rgba(255,255,255,.55)">Izhodišče · 02</span></div>
+    <div style="margin-top:56px;max-width:900px">
+      <div class="kicker">Izhodišče</div>
+      <h2 style="max-width:850px">Stran mora zgraditi zaupanje. Hitro.</h2>
+      <p class="lead" style="margin-top:16px;max-width:720px">Ne gre za novo preobleko. Gre za jasno pot od prvega vtisa do pogovora — na telefonu in na računalniku.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><span class="num">01</span><h3>Jasen prvi vtis</h3><p>V enem zaslonu je vidno, kaj podjetje počne, za koga in kaj storiti naprej.</p></div>
+      <div class="pillar"><span class="num">02</span><h3>Pot do povpraševanja</h3><p>Od storitve do obrazca v dveh korakih; telefon je vedno dosegljiv.</p></div>
+      <div class="pillar"><span class="num">03</span><h3>Dokaz, ne obljuba</h3><p>Resnične fotografije, konkretni podatki in dežurna služba 24/7.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>Energetika Vodovod · predlog spletne strani</span><span><b>03</b> / 15</span></div>
+</section>
+
+<!-- 04 VISUAL -->
+<section class="slide">
+  <div class="pad">
+    <div class="top"><img class="logo" src="../assets/img/logo.png" alt="Energetika Vodovod"><span class="eyebrow-sm">Vizualna smer · 03</span></div>
+    <div style="margin-top:30px">
+      <div class="kicker">Vizualna smer</div>
+      <h2>Toplo. Tehnično. Brez klišejev.</h2>
+    </div>
+    <div class="direction">
+      <div>
+        <p class="lead">Papir in petrol umirita stran. Signalna rdeča ostane barva podjetja — uporabljena odmerjeno, tam, kjer nekaj zahteva pozornost.</p>
+        <div class="note">Rdeča ni več ozadje. Je podpis: logo, poudarek, nujni klic.</div>
+      </div>
+      <div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch__color" style="background:#fbf7f0"></div><div class="swatch__meta"><b>Papir</b><span>#FBF7F0</span></div></div>
+          <div class="swatch"><div class="swatch__color" style="background:#0e2b2a"></div><div class="swatch__meta"><b>Petrol</b><span>#0E2B2A</span></div></div>
+          <div class="swatch"><div class="swatch__color" style="background:#e60f0e"></div><div class="swatch__meta"><b>Signalna rdeča</b><span>#E60F0E</span></div></div>
+          <div class="swatch"><div class="swatch__color" style="background:#b08a58"></div><div class="swatch__meta"><b>Medenina</b><span>#B08A58</span></div></div>
+        </div>
+        <div class="type-spec">
+          <div class="type-spec__big">Aa</div>
+          <div class="type-spec__small"><b>Fraunces</b>Naslovi z značajem. Topli, a dovolj tehnični za energetiko.</div>
+          <div class="type-spec__small"><b>Inter</b>Berljivo besedilo, obrazci in navigacija na vseh zaslonih.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-fill"><p>Rdeča ostaja podpis. Zdaj kot poudarek.</p><span>Vizualna smer</span></div>
+  </div>
+  <div class="foot"><span>Energetika Vodovod · predlog spletne strani</span><span><b>04</b> / 15</span></div>
+</section>
+
+<!-- 05 HOME -->
+<section class="slide">
+  <div class="pad">
+    <div class="top"><img class="logo" src="../assets/img/logo.png" alt="Energetika Vodovod"><span class="eyebrow-sm">Domača stran · 04</span></div>
+    <div class="grid-2 grid-2--media" style="margin-top:16px">
+      <div class="stack">
+        <div class="kicker">Domača stran</div>
+        <h2 style="font-size:44px">Prvi zaslon pove bistvo.</h2>
+        <p class="lead">V eni potezi: kaj delamo, za koga in kaj storiti naprej. Brez iskanja po meniju.</p>
+        <div class="callouts">
+          <div class="callout"><h3>Zgodba</h3><p>“Vse deluje. Tako, kot mora.” — jasno obljubo podprejo storitve in izkušnje.</p></div>
+          <div class="callout"><h3>Dejanje</h3><p>Povpraševanje ali ogled storitev. Oba gumba sta vidna takoj.</p></div>
+          <div class="callout"><h3>Zaupanje</h3><p>20+ let, 24/7 in 1.000+ projektov — brez dolgega uvoda.</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="browser"><div class="browser__bar"><i class="browser__dot"></i><i class="browser__dot"></i><i class="browser__dot"></i><span class="browser__url">energetikavodovod.si</span></div><img src="readme-hero.jpg" alt="Domača stran — prvi zaslon"></div>
+        <p class="caption">Video je ujet v okvir; stran ostane lahka in berljiva.</p>
+      </div>
+    </div>
+    <div class="slide-fill"><p>Prvi zaslon ni okras — je prodajni prostor.</p><span>Domača stran</span></div>
+  </div>
+  <div class="foot"><span>Energetika Vodovod · predlog spletne strani</span><span><b>05</b> / 15</span></div>
+</section>
+
+<!-- 06 SERVICES -->
+<section class="slide slide--surface">
+  <div class="pad">
+    <div class="top"><img class="logo" src="../assets/img/logo.png" alt="Energetika Vodovod"><span class="eyebrow-sm">Storitve · 05</span></div>
+    <div class="grid-2" style="margin-top:20px">
+      <div>
+        <div class="kicker">Storitve</div>
+        <h2 style="font-size:42px">Osem strok.<br>Ena odgovorna ekipa.</h2>
+        <p class="lead" style="margin-top:12px;font-size:13px">Vsaka storitev ima svojo stran, podrobnosti in jasno pot do povpraševanja.</p>
+        <div class="svc">
+          <div class="svc__row"><span>01</span><b>Elektroinštalacije</b></div>
+          <div class="svc__row"><span>02</span><b>Vodovod</b></div>
+          <div class="svc__row"><span>03</span><b>Prezračevanje</b></div>
+          <div class="svc__row"><span>04</span><b>Klimatizacija</b></div>
+          <div class="svc__row"><span>05</span><b>Toplotne črpalke</b></div>
+          <div class="svc__row"><span>06</span><b>Pametni domovi</b></div>
+          <div class="svc__row"><span>07</span><b>Vzdrževanje</b></div>
+          <div class="svc__row"><span>08</span><b>Svetovanje</b></div>
+        </div>
+      </div>
+      <div>
+        <div class="browser"><div class="browser__bar"><i class="browser__dot"></i><i class="browser__dot"></i><i class="browser__dot"></i><span class="browser__url">energetikavodovod.si/#storitve</span></div><img src="readme-services.jpg" alt="Pregled osmih storitev"></div>
+        <p class="caption">Osem kartic, en vizualni jezik, jasen vrstni red.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Energetika Vodovod · predlog spletne strani</span><span><b>06</b> / 15</span></div>
+</section>
+
+<!-- 07 MISSION -->
+<section class="slide slide--dark">
+  <div class="pad">
+    <div class="top"><img class="logo" src="../assets/img/logo-white.png" alt="Energetika Vodovod"><span class="eyebrow-sm" style="color:rgba(255,255,255,.55)">Misija · 06</span></div>
+    <div class="grid-2" style="margin-top:26px">
+      <div>
+        <div class="kicker">Misija</div>
+        <h2 style="font-size:42px">Dobro izvedeno delo se ne konča z montažo.</h2>
+        <p class="lead" style="margin-top:14px;font-size:13px">Verjamemo v sisteme, ki delujejo tiho — in v ekipo, ki ostane dosegljiva tudi po predaji.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px 22px;margin-top:18px">
+          <div class="callout" style="border-top-color:rgba(255,255,255,.16)"><h3>Kakovost</h3><p>Vrhunski materiali in preverjeni standardi izvedbe.</p></div>
+          <div class="callout" style="border-top-color:rgba(255,255,255,.16)"><h3>Točnost</h3><p>Dogovorjeni roki in jasna komunikacija.</p></div>
+          <div class="callout" style="border-top-color:rgba(255,255,255,.16)"><h3>Garancija</h3><p>Polna garancija na storitve in vgrajeno opremo.</p></div>
+          <div class="callout" style="border-top-color:rgba(255,255,255,.16)"><h3>Inovacije</h3><p>Tehnologije, ki znižujejo stroške in dvigujejo udobje.</p></div>
+        </div>
+      </div>
+      <div class="shot"><img src="readme-mission.jpg" alt="Misija in vrednote"></div>
+    </div>
+  </div>
+  <div class="foot"><span>Energetika Vodovod · predlog spletne strani</span><span><b>07</b> / 15</span></div>
+</section>
+
+<!-- 08 TIPS -->
+<section class="slide">
+  <div class="pad">
+    <div class="top"><img class="logo" src="../assets/img/logo.png" alt="Energetika Vodovod"><span class="eyebrow-sm">Vsebina · 07</span></div>
+    <div class="grid-2 grid-2--copy" style="margin-top:18px">
+      <div>
+        <div class="kicker">Vsebina</div>
+        <h2 style="font-size:43px">Nasveti, ki stranko vrnejo.</h2>
+        <p class="lead" style="font-size:13px">Trije praktični nasveti za dom. Vsebina, ki dokazuje znanje in pomaga pri iskanju.</p>
+        <div class="callouts" style="margin-top:16px">
+          <div class="callout"><h3>Elektro</h3><p>Redno preverjanje naprav in vtičnic.</p></div>
+          <div class="callout"><h3>Klima</h3><p>Čiščenje filtrov za učinkovito delovanje.</p></div>
+          <div class="callout"><h3>Vodovod</h3><p>Pravočasno ukrepanje ob prvih znakih puščanja.</p></div>
+        </div>
+      </div>
+      <div class="shot"><img src="readme-tips.jpg" alt="Nasveti za vsak dan"></div>
+    </div>
+  </div>
+  <div class="foot"><span>Energetika Vodovod · predlog spletne strani</span><span><b>08</b> / 15</span></div>
+</section>
+
+<!-- 09 SERVICE PAGE -->
+<section class="slide">
+  <div class="pad">
+    <div class="top"><img class="logo" src="../assets/img/logo.png" alt="Energetika Vodovod"><span class="eyebrow-sm">Storitve · 08</span></div>
+    <div class="grid-2 grid-2--media" style="margin-top:16px">
+      <div>
+        <div class="kicker">Storitev — podstran</div>
+        <h2 style="font-size:43px">Vsaka storitev je svoja zgodba.</h2>
+        <p class="lead" style="margin-top:12px;font-size:13px">Stran ne našteva le storitve. Pove, kaj zajema, kako poteka in kdaj je pravi čas za klic.</p>
+        <div class="callouts" style="margin-top:16px">
+          <div class="callout"><h3>Kaj zajema</h3><p>Obseg, materiali in posebnosti posameznega sistema.</p></div>
+          <div class="callout"><h3>Kako poteka</h3><p>Od pregleda in predloga do izvedbe brez presenečenj.</p></div>
+          <div class="callout"><h3>Pogosta vprašanja</h3><p>Odgovori na pomisleke, preden stranka pokliče.</p></div>
+          <div class="callout"><h3>Povpraševanje</h3><p>Obrazec in telefonska številka na istem mestu.</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="browser"><div class="browser__bar"><i class="browser__dot"></i><i class="browser__dot"></i><i class="browser__dot"></i><span class="browser__url">energetikavodovod.si/storitve/vodovod</span></div><img src="readme-service.jpg" alt="Storitvena podstran Vodovod"></div>
+        <p class="caption">Svobodna postavitev: naslov, fotografija in vsebina dihajo.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Energetika Vodovod · predlog spletne strani</span><span><b>09</b> / 15</span></div>
+</section>
+
+<!-- 10 REFERENCES -->
+<section class="slide slide--surface">
+  <div class="pad">
+    <div class="top"><img class="logo" src="../assets/img/logo.png" alt="Energetika Vodovod"><span class="eyebrow-sm">Reference · 09</span></div>
+    <div class="grid-2" style="margin-top:20px">
+      <div>
+        <div class="kicker">Reference</div>
+        <h2 style="font-size:43px">Resnične fotografije. Brez izmišljenih projektov.</h2>
+        <p class="lead" style="margin-top:14px;font-size:13px">Filtri po stroki, dostopna povečava in jasna oznaka obsega. Stranka vidi dela, ki so bila resnično izvedena.</p>
+        <div class="note">Fotografije so iz lastnega arhiva podjetja. Nobenih tujih projektov ali izmišljenih lokacij.</div>
+      </div>
+      <div class="stack">
+        <div class="shot"><img src="readme-references.jpg" alt="Galerija referenc s filtri"></div>
+        <div class="shot" style="width:72%;margin-left:auto"><img src="readme-lightbox.jpg" alt="Povečava reference"></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Energetika Vodovod · predlog spletne strani</span><span><b>10</b> / 15</span></div>
+</section>
+
+<!-- 11 CONTACT -->
+<section class="slide">
+  <div class="pad">
+    <div class="top"><img class="logo" src="../assets/img/logo.png" alt="Energetika Vodovod"><span class="eyebrow-sm">Kontakt · 10</span></div>
+    <div style="margin-top:20px">
+      <div class="kicker">Kontakt</div>
+      <h2 style="font-size:44px">Dve poti do pogovora.</h2>
+      <p class="lead" style="margin-top:10px;max-width:760px;font-size:13px">Kratek obrazec v dveh korakih in dežurna številka, ki je vedno vidna. Brez izgubljanja v menijih.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px">
+      <div class="shot"><img src="readme-contact.jpg" alt="Kontaktna stran"></div>
+      <div class="shot"><img src="readme-inquiry.jpg" alt="Dvostopenjsko povpraševanje"></div>
+    </div>
+    <div style="display:flex;gap:24px;margin-top:12px;font-size:9px;color:var(--muted-2)">
+      <span><span class="dot-red"></span>Nujni klic je vedno dosegljiv.</span>
+      <span><span class="dot-red"></span>Obrazec je pripravljen za povezavo z vašo e-pošto.</span>
+    </div>
+  </div>
+  <div class="foot"><span>Energetika Vodovod · predlog spletne strani</span><span><b>11</b> / 15</span></div>
+</section>
+
+<!-- 12 MOBILE -->
+<section class="slide slide--dark">
+  <div class="pad">
+    <div class="top"><img class="logo" src="../assets/img/logo-white.png" alt="Energetika Vodovod"><span class="eyebrow-sm" style="color:rgba(255,255,255,.55)">Mobilna izkušnja · 11</span></div>
+    <div class="grid-2" style="margin-top:18px">
+      <div class="phone-wrap"><div class="phone"><div class="phone__bar"><i></i></div><img src="readme-mobile.jpg" alt="Mobilni prikaz domače strani"></div></div>
+      <div>
+        <div class="kicker">Mobilna izkušnja</div>
+        <h2 style="font-size:45px">Enako prepričljivo na telefonu.</h2>
+        <p class="lead" style="margin-top:14px;font-size:13px">Večina strank pride prek telefona. Zato je mobilna različica načrtovana prva, ne kot naknadna misel.</p>
+        <div class="mobile-points" style="margin-top:18px">
+          <div class="callout"><h3>Povpraševanje takoj</h3><p>Povpraševanje je dosegljivo brez dolgega drsenja.</p></div>
+          <div class="callout"><h3>Branje brez zooma</h3><p>Velika tipografija, jasna hierarhija in dovolj prostora.</p></div>
+          <div class="callout"><h3>Klic v eni potezi</h3><p>Dežurna številka ostane na dosegu, ko je najbolj potrebna.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Energetika Vodovod · predlog spletne strani</span><span><b>12</b> / 15</span></div>
+</section>
+
+<!-- 13 QUALITY -->
+<section class="slide">
+  <div class="pad">
+    <div class="top"><img class="logo" src="../assets/img/logo.png" alt="Energetika Vodovod"><span class="eyebrow-sm">Kakovost · 12</span></div>
+    <div style="margin-top:26px">
+      <div class="kicker">Kakovost</div>
+      <h2 style="font-size:44px">Pripravljeno za resnično uporabo.</h2>
+    </div>
+    <div class="metrics">
+      <div class="metric"><b>15</b><span>strani</span></div>
+      <div class="metric"><b>8</b><span>storitev</span></div>
+      <div class="metric"><b>0</b><span>zaznanih kršitev dostopnosti</span></div>
+      <div class="metric"><b>100%</b><span>statično</span></div>
+    </div>
+    <div class="quality">
+      <div class="quality__item"><h3>Dostopnost</h3><p>Tipkovnica, kontrast, zmanjšano gibanje. 0 napak po orodju axe na vseh 15 straneh.</p></div>
+      <div class="quality__item"><h3>Zasebnost</h3><p>Analitika se naloži šele po privolitvi. Jasna politika piškotkov in zasebnosti.</p></div>
+      <div class="quality__item"><h3>Iskalniki</h3><p>Meta podatki, strukturirani podatki, sitemap, robots in 301 preusmeritve.</p></div>
+      <div class="quality__item"><h3>Odzivnost</h3><p>Preverjeno na 1440 px in 390 px. Brez horizontalnega drsenja.</p></div>
+    </div>
+    <p class="quality__note">Obrazca sta pripravljena. Končna dostava e-pošte se poveže ob postavitvi na produkcijski strežnik in pred objavo preizkusi.</p>
+    <div class="slide-fill"><p>Brez presenečenj pred objavo.</p><span>Kakovost</span></div>
+  </div>
+  <div class="foot"><span>Energetika Vodovod · predlog spletne strani</span><span><b>13</b> / 15</span></div>
+</section>
+
+<!-- 14 NEXT -->
+<section class="slide slide--dark">
+  <div class="pad">
+    <div class="top"><img class="logo" src="../assets/img/logo-white.png" alt="Energetika Vodovod"><span class="eyebrow-sm" style="color:rgba(255,255,255,.55)">Naslednji koraki · 13</span></div>
+    <div style="margin-top:54px;max-width:820px">
+      <div class="kicker">Naslednji koraki</div>
+      <h2 style="font-size:46px">Pred objavo ostane še nekaj odločitev.</h2>
+      <p class="lead" style="margin-top:14px;font-size:13px">Predlog je pripravljen. Skupaj ga pripeljemo do objave — brez presenečenj in brez izgubljenih podatkov.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><b>01</b><h3>Potrditev vsebine</h3><p>Besedila, fotografije in podatki o podjetju.</p></div>
+      <div class="step"><b>02</b><h3>Povezava obrazcev</h3><p>Produkcijska e-pošta in preizkus pošiljanja.</p></div>
+      <div class="step"><b>03</b><h3>Selitev in domena</h3><p>Gostovanje, zasebna koda in povezava domene.</p></div>
+      <div class="step"><b>04</b><h3>Objava</h3><p>Zadnji pregled, preusmeritve in predaja.</p></div>
+    </div>
+    <div class="slide-fill"><p>Predlog je pripravljen. Zdaj je na vrsti pogovor.</p><span>Naslednji koraki</span></div>
+  </div>
+  <div class="foot"><span>Energetika Vodovod · predlog spletne strani</span><span><b>14</b> / 15</span></div>
+</section>
+
+<!-- 15 CLOSING -->
+<section class="slide closing">
+  <div class="closing__copy">
+    <img class="logo" src="../assets/img/logo.png" alt="Energetika Vodovod">
+    <h2>Hvala.</h2>
+    <p>Predlog je pripravljen za ogled. Naslednji korak je pogovor o vsebini, obrazcih in datumu objave.</p>
+    <div class="contact-block">
+      <div><b>Telefon</b><span>080 22 50</span></div>
+      <div><b>E-pošta</b><span>info@energetikavodovod.si</span></div>
+      <div><b>Naslov</b><span>Kotnikova ulica 5, 1000 Ljubljana</span></div>
+    </div>
+    <div style="margin-top:20px;font-size:9px;letter-spacing:.06em;color:var(--muted-2)">Energetika Vodovod d.o.o. · Matična št. 8167117000 · DDV SI41527933</div>
+    <div style="margin-top:auto;padding-top:24px;font-size:10px;color:var(--muted)">Predogled: <b style="color:var(--ink)">po dogovoru.</b></div>
+  </div>
+  <div class="closing__media">
+    <img src="../assets/img/hero-living.jpg" alt="Udobje doma">
+    <div class="closing__badge"><img src="../assets/img/logo-white.png" alt=""><span>Vse deluje. Tako, kot mora.</span></div>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
