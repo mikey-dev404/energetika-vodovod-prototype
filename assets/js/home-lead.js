@@ -1,3 +1,4 @@
+/* © 2026 mikey-dev404. All rights reserved. Proprietary code; see LICENSE. */
 /* =========================================================
    Homepage — compact two-step inquiry
    Independent from the full contact form. Submits to the

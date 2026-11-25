@@ -1,3 +1,4 @@
+/* © 2026 mikey-dev404. All rights reserved. Proprietary code; see LICENSE. */
 /* =========================================================
    Energetika Vodovod — site interactions
    Navigation, reveals, contact inquiry and shared UI.

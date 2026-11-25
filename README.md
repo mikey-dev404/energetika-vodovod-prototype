@@ -195,6 +195,14 @@ Configuration and testing: [`docs/cookie-consent.md`](docs/cookie-consent.md).
 
 ---
 
+## Ownership & copyright
+
+Copyright © 2026 **mikey-dev404** (replace with your legal name/company). The source code, structure and design implementation are proprietary; see [`LICENSE`](LICENSE). Client brand assets — the Energetika Vodovod name, logo, photography and copy — remain the client’s property and are excluded from that claim.
+
+Practical protection and a Slovenian contract clause template: [`docs/ip-and-copyright.md`](docs/ip-and-copyright.md). The signed development agreement, not the repo visibility, is the main legal ground. `MANIFEST.sha256` records the source hashes at the tagged commit.
+
+---
+
 ## Git
 
 ```bash

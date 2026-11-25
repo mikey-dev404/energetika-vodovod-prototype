@@ -1,3 +1,4 @@
+/* © 2026 mikey-dev404. All rights reserved. Proprietary code; see LICENSE. */
 /* =========================================================
    Energetika Vodovod — cookie consent + GTM gate
    No analytics request is made until the visitor consents.

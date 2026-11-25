@@ -6,6 +6,7 @@
 /.nojekyll       /404.html  404
 /_redirects      /404.html  404
 /.gitignore      /404.html  404
+/MANIFEST.sha256 /404.html  404
 
 # Legacy WordPress URLs -> new static structure (301)
 /vzdrzevanje/        /storitve/vzdrzevanje.html        301
